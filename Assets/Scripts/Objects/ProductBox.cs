@@ -8,8 +8,8 @@ public class ProductBox : MonoBehaviour
     public List<GameConstants.StationType> processes;
     public int currentWork;
     public bool inspected;
-    public float timeRemainingToRepair;
-    public float timeToRepair;
+    //public float timeRemainingToRepair;
+    //public float timeToRepair;
 
     public bool isCarried;
     public bool isPlaced;
@@ -24,10 +24,10 @@ public class ProductBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeRemainingToRepair -= Time.deltaTime;
-        if (timeRemainingToRepair <= 0f)
-        {
-            // TODO:
-        }
+        //timeRemainingToRepair -= Time.deltaTime;
+        //if (timeRemainingToRepair <= 0f)
+        //{
+        //    // TODO:
+        //}
     }
 }

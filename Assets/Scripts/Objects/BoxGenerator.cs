@@ -54,22 +54,22 @@ public class BoxGenerator : MonoBehaviour
                 randomIndex = Random.Range(0, processTypeSequences.Count);
             }
 
+            productBox.processes.Add(GameConstants.StationType.CInspection);
             for(int i = 0; i < processTypeSequences[randomIndex].Length; i++)
             {
                 switch(processTypeSequences[randomIndex][i])
                 {
                     case 'L':
-                        //productBox.processes.Add();
+                        productBox.processes.Add(lightProcessToBeRandomize[Random.Range(0, lightProcessToBeRandomize.Count)]);
                         break;
                     case 'H':
-                        break;
-                    case 'C':
+                        productBox.processes.Add(heavyProcessToBeRandomize[Random.Range(0, heavyProcessToBeRandomize.Count)]);
                         break;
                     default:
                         break;
                 }
             }
-
+            productBox.processes.Add(GameConstants.StationType.CPolishing);
         }
     }
 }
