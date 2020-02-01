@@ -36,5 +36,18 @@ public class GameConstants
         MoveJoystick
     }
 
-
+    public enum StationAnimations
+    {
+        BoxInput,
+        BoxOutput,
+        Working,
+        Idle
+    }
+    public enum RobotAnimations
+    {
+        BoxInput,
+        BoxOutput,
+        Working,
+        Idle
+    }
 }
