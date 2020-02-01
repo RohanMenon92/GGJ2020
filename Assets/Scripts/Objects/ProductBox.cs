@@ -27,7 +27,7 @@ public class ProductBox : MonoBehaviour
         timeRemainingToRepair -= Time.deltaTime;
         if (timeRemainingToRepair <= 0f)
         {
-
+            // TODO:
         }
     }
 }

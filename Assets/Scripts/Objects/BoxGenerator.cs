@@ -42,4 +42,34 @@ public class BoxGenerator : MonoBehaviour
             boxesPool.Add(Instantiate(boxPrefab));
         }
     }
+
+    public void randomizeProcesses()
+    {
+        foreach(GameObject currentBoxGameObject in boxesPool)
+        {
+            ProductBox productBox = currentBoxGameObject.GetComponent<ProductBox>();
+            int randomIndex = Random.Range(0, processTypeSequences.Count);
+            while (processTypeSequences[randomIndex].Length > maxProcessesPerBox)
+            {
+                randomIndex = Random.Range(0, processTypeSequences.Count);
+            }
+
+            for(int i = 0; i < processTypeSequences[randomIndex].Length; i++)
+            {
+                switch(processTypeSequences[randomIndex][i])
+                {
+                    case 'L':
+                        //productBox.processes.Add();
+                        break;
+                    case 'H':
+                        break;
+                    case 'C':
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+        }
+    }
 }
