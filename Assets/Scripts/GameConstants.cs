@@ -5,12 +5,12 @@ using UnityEngine;
 public class GameConstants
 {
     public enum StationType {
-        LWelding,
+        //LWelding,
         LElectric,
         LProgramming,
-        HDisassembly,
+        //HDisassembly,
         HWiring,
-        HBuffing,
+        HWelding,
         CPolishing,
         CTable,
         CInspection,

@@ -71,14 +71,12 @@ public class StationTop : MonoBehaviour
     {
         switch(stationType)
         {
-            case GameConstants.StationType.HBuffing:
-            case GameConstants.StationType.HDisassembly:
+            case GameConstants.StationType.HWelding:
             case GameConstants.StationType.HWiring:
                 return player.botType == GameConstants.PlayerBotType.Heavy;
                 break;
             case GameConstants.StationType.LElectric:
             case GameConstants.StationType.LProgramming:
-            case GameConstants.StationType.LWelding:
                 return player.botType == GameConstants.PlayerBotType.Light;
                 break;
             case GameConstants.StationType.CInspection:
