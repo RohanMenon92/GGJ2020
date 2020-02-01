@@ -28,6 +28,12 @@ public class StationTop : MonoBehaviour
                 isWorking = false;
             }
         }
+
+        if(currentBox)
+        {
+            // make the box place on the top of station
+            currentBox.transform.position = new Vector3(transform.position.x, transform.position.y + 0.75f, transform.position.z);
+        }
     }
 
     public void Interact(PlayerBot player, ProductBox box)
