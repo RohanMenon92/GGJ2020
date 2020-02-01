@@ -29,16 +29,11 @@ public class PlayerBot : MonoBehaviour
     }
 
     // Control Inputs
-    public void ControlButton(string controlName, bool value)
+    public void ControlButton(GameConstants.ButtonMessage buttonControl, bool value)
     {
-        Debug.Log("Control Button Pressed " + controlName + " Value" + value);
+        Debug.Log("Control Button Pressed " + buttonControl + " Value" + value);
 
-        // Using this to break up 
-        GameConstants.ButtonMessage result = (GameConstants.ButtonMessage)Enum.Parse(typeof(GameConstants.ButtonMessage), controlName, true);
-
-        Debug.Log("Valid Action Pressed " + result);
-
-        switch (result)
+        switch (buttonControl)
         {
             case GameConstants.ButtonMessage.Special1Pressed:
                 Special1Pressed(value);
@@ -88,12 +83,9 @@ public class PlayerBot : MonoBehaviour
         }
     }
 
-    public void ControlJoystickInput(string controlName, float XValue, float YValue)
+    public void ControlJoystickInput(GameConstants.JoystickControlMessage joystickControl, float XValue, float YValue)
     {
-        GameConstants.JoystickControlMessage result = (GameConstants.JoystickControlMessage
-            )Enum.Parse(typeof(GameConstants.ButtonMessage), controlName, true);
-
-        switch(result)
+        switch(joystickControl)
         {
             case GameConstants.JoystickControlMessage.MoveJoystick:
                 MoveJoystick(XValue, YValue);
@@ -103,14 +95,11 @@ public class PlayerBot : MonoBehaviour
         }
     }
 
-    public void ControlJoystickToggle(string controlName, bool value)
+    public void ControlJoystickToggle(GameConstants.JoystickControlMessage joystickControl, bool value)
     {
-        Debug.Log("Control Joystick Toggle " + controlName + " Value" + value);
-
-        GameConstants.JoystickControlMessage result = (GameConstants.JoystickControlMessage
-           )Enum.Parse(typeof(GameConstants.ButtonMessage), controlName, true);
-
-        switch (result)
+        Debug.Log("Control Joystick Toggle " + joystickControl.ToString() + " Value" + value);
+               
+        switch (joystickControl)
         {
             case GameConstants.JoystickControlMessage.MoveJoystick:
                 ToggleJoystick(value);
@@ -220,7 +209,7 @@ public class PlayerBot : MonoBehaviour
         // Check Joystick Control
         if(joystickMoving)
         {
-            Vector2 directionToMove = joystickPosition * movingSpeed;
+            Vector2 directionToMove = joystickPosition * (movingSpeed * (isSprinting ? 1.5f : 1f));
 
             // TODO:: Should be rigidbody physics?
             gameObject.transform.Translate(directionToMove);

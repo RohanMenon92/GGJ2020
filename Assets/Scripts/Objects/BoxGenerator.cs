@@ -37,7 +37,7 @@ public class BoxGenerator : MonoBehaviour
         }*/
 
         // no box currently on generator
-        if(!thisStation.currentBox && )
+        if(!thisStation.currentBox)
         {
             // 
         }
