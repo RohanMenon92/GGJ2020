@@ -21,7 +21,7 @@ public class StationTop : MonoBehaviour
         if (isWorking && progress >= 1f)
         {
             progress += speed * Time.deltaTime;
-            currentBox.doneIndex++;
+            currentBox.currentWork++;
             isWorking = false;
         }
     }
@@ -32,7 +32,7 @@ public class StationTop : MonoBehaviour
         {
             currentBox = box;
             player.carryingBox = null;
-            if (box.doneIndex < box.processes.Count && box.processes[box.doneIndex] == stationType && PlayerTypeCompatibleCheck(player))
+            if (box.currentWork < box.processes.Count && box.processes[box.currentWork] == stationType && PlayerTypeCompatibleCheck(player))
             {
                 isWorking = true;
                 progress = 0f;

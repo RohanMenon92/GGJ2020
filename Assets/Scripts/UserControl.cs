@@ -1,43 +1,71 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using nw
+using NDream.AirConsole;
+using Newtonsoft.Json.Linq;
 
 public class UserControl : MonoBehaviour
 {
+    public Dictionary<int, PlayerBot> devicesConnected = new Dictionary<int, PlayerBot>();
 
 
-    bool UpPressed, DownPressed, LeftPressed, RightPressed, InteractPressed;
+    // Private
+    GameManager gameManager;
+
+    
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
+    }
+
+    public void AddNewPlayer(int deviceID)
+    {
+        if (devicesConnected.ContainsKey(deviceID))
+        {
+            return;
+        }
+
+        PlayerBot newPlayerBot = gameManager.OnPlayerAdded();
+
+        devicesConnected.Add(deviceID, newPlayerBot);
 
     }
 
-    void InputPressed(int from, JToken data) {
-        Debug.Log("message: " + data);
+    public void InputPressed(int from, JToken data) {
+        Debug.Log("Received message: " + data);
 
         //When I get a message, I check if it's from any of the devices stored in my device Id dictionary
-        if (players.ContainsKey(from) && data["action"] != null)
+        if (devicesConnected.ContainsKey(from) && data["action"] != null)
         {
-            //I forward the command to the relevant player script, assigned by device ID
-            players[from].ButtonInput(data["action"].ToString());
+            PlayerBot playerBot = devicesConnected[from];
+
+            if (data["action"].ToString() == "joystick")
+            {
+                if(data["position"] != null)
+                {
+                    playerBot.ControlJoystickInput(data["name"].ToString(), (float)data["position"]["x"], (float)data["position"]["y"]);
+                } else
+                {
+                    playerBot.ControlJoystickToggle(data["name"].ToString(), (bool)data["touch"]);
+                }
+            } else
+            {
+                playerBot.ControlButton(data["name"].ToString(), data["value"].ToString() == "true");
+            }
+            //I forward the command to the r0levant player script, assigned by device ID
         }
 
 
 
-        TestEnum foo = (TestEnum)Enum.Parse(typeof(TestEnum), incoming, true);
 
     }
+
+    
 
     // Update is called once per frame
     void Update()
     {
-        if(UpPressed)
-        {
-            
-        } 
-        
 
     }
 }
