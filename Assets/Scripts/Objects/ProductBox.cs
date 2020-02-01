@@ -25,4 +25,9 @@ public class ProductBox : MonoBehaviour
     {
         timeToRepair -= Time.deltaTime;
     }
+
+    public GameConstants.StationType GetCurrentJob()
+    {
+        return processes[currentWork];
+    }
 }

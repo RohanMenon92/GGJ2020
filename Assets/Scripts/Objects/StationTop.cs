@@ -38,6 +38,8 @@ public class StationTop : MonoBehaviour
 
     public void Interact(PlayerBot player, ProductBox box)
     {
+        Debug.Log("Station Top Interacted " + gameObject.name);
+
         if (box && !currentBox)
         {
             currentBox = box;
