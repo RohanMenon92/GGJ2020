@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="airconsole-controls/dpad/dpad.css">
     <link rel="stylesheet" href="airconsole-controls/joystick/joystick.css">
     <link rel="stylesheet" href="airconsole-controls/ctrl-generator/controller.css">
+    
 </head>
 <body>
 
@@ -74,30 +75,7 @@
                     "type": {
                         "label": "Joystick",
                         "class_name": "Joystick"
-                    },
-                    "touchstart": function () {
-                        rateLimiter.message(AirConsole.SCREEN, {
-                            "joystick_left": {
-                                touch: true
-                            }
-                        });
-                    },
-                    "touchmove": function (position) {
-                        console.log(position)
-                        rateLimiter.message(AirConsole.SCREEN, {
-                            "joystick_left": {
-                                position: position
-                            }
-                        });
-                    },
-                    "touchend": function (had_direction) {
-                        rateLimiter.message(AirConsole.SCREEN, {
-                            "joystick_left": {
-                                touch: false
-                            }
-                        });
-                    },
-                    absolute_start: false
+                    }
                 },
                 "middle": [],
                 "right":

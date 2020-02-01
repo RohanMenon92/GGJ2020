@@ -8,6 +8,9 @@ public class UserControl : MonoBehaviour
 {
     public Dictionary<int, PlayerBot> devicesConnected = new Dictionary<int, PlayerBot>();
 
+    public PlayerBot smithBot;
+    public PlayerBot sparkyBot;
+
     // Private
     GameManager gameManager;
 
