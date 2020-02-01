@@ -52,19 +52,19 @@ public class UserControl : MonoBehaviour
 
             if (data["joystick-left"] != null)
             {
-                playerBot.ControlJoystickToggle(GameConstants.JoystickControlMessage.MoveJoystick, data["pressed"].ToString() == "true");
-                playerBot.ControlJoystickInput(GameConstants.JoystickControlMessage.MoveJoystick, (float)data["message"]["x"], (float)data["message"]["y"]);
+                playerBot.ControlJoystickToggle(GameConstants.JoystickControlMessage.MoveJoystick, (bool) data["joystick-left"]["message"]["pressed"]);
+                playerBot.ControlJoystickInput(GameConstants.JoystickControlMessage.MoveJoystick, (float)data["joystick-left"]["message"]["x"], (float)data["joystick-left"]["message"]["y"]);
             } else if(data["action1"] != null)
             {
-                playerBot.ControlButton(GameConstants.ButtonMessage.Special1Pressed, data["action1"]["pressed"].ToString() == "true");
+                playerBot.ControlButton(GameConstants.ButtonMessage.Special1Pressed, (bool)data["action1"]["pressed"]);
             }
             else if (data["action2"] != null)
             {
-                playerBot.ControlButton(GameConstants.ButtonMessage.Special2Pressed, data["action2"]["pressed"].ToString() == "true");
+                playerBot.ControlButton(GameConstants.ButtonMessage.Special2Pressed, (bool)data["action2"]["pressed"]);
             }
             else if (data["action3"] != null)
             {
-                playerBot.ControlButton(GameConstants.ButtonMessage.SprintPressed, data["action3"]["pressed"].ToString() == "true");
+                playerBot.ControlButton(GameConstants.ButtonMessage.SprintPressed, (bool)data["action3"]["pressed"]);
             }
             //I forward the command to the r0levant player script, assigned by device ID
         }
