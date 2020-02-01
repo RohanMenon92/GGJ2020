@@ -8,7 +8,7 @@ public class StationTop : MonoBehaviour
     public bool isWorking;
     public float progress;
     public float speed;
-    public int currentBoxId;
+    public ProductBox currentBox;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +18,30 @@ public class StationTop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (isWorking && progress >= 1f)
+        {
+            progress += speed * Time.deltaTime;
+            currentBox.doneIndex++;
+            isWorking = false;
+        }
+    }
+
+    public void interact(PlayerBot player, ProductBox box)
+    {
+        if (box)
+        {
+            currentBox = box;
+            if (box.processes[box.doneIndex] == stationType)
+            {
+                isWorking = true;
+                progress = 0f;
+            }
+
+            if (!isWorking)
+            {
+                player.carryingBox = currentBox;
+                currentBox = null;
+            }
+        }
     }
 }

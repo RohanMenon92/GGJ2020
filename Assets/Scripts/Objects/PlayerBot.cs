@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerBot : MonoBehaviour
 {
     public int controllerId;
-    public int boxId;
-
+    public ProductBox carryingBox = null;
+    public int movingSpeed;
     // Start is called before the first frame update
     void Start()
     {
