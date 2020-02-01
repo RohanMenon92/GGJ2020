@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3663a5b6d9975248b5aeb3e4a30d3ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stationType: 9
+  stationType: 7
   isWorking: 0
   progress: 0
   speed: 0
@@ -127,14 +127,16 @@ MonoBehaviour:
   processTypeSequences:
   - HL
   - LH
-  - HC
-  - CH
-  - LC
-  - CL
   - HLHL
   - LHLH
-  - HCLH
-  - LCHL
+  - HLH
+  - LHL
+  - HLHLH
+  - LHLHLH
+  - HHLLHH
+  - LLHHLL
+  - HLLHHL
+  - LLHHL
   heavyProcessToBeRandomize: 0300000002000000
   lightProcessToBeRandomize: 0000000001000000
   commonProcessToBeRandomize: 04000000
