@@ -28,6 +28,12 @@ public class StationTop : MonoBehaviour
                 isWorking = false;
             }
         }
+
+        if(currentBox)
+        {
+            // make the box place on the top of station
+            currentBox.transform.position = new Vector3(transform.position.x, transform.position.y + 0.75f, transform.position.z);
+        }
     }
 
     public void Interact(PlayerBot player, ProductBox box)
@@ -61,41 +67,24 @@ public class StationTop : MonoBehaviour
 
     private bool PlayerTypeCompatibleCheck(PlayerBot player)
     {
-        if (player.botType == GameConstants.PlayerBotType.Heavy)
+        switch(stationType)
         {
-            switch(stationType)
-            {
-                case GameConstants.StationType.HBuffing:
-                case GameConstants.StationType.HDisassembly:
-                case GameConstants.StationType.HWiring:
-                case GameConstants.StationType.CInspection:
-                case GameConstants.StationType.CPolishing:
-                case GameConstants.StationType.CTable:
-                    return true;
-                default:
-                    return false;
-
-            }
-        }
-        else if(player.botType == GameConstants.PlayerBotType.Light)
-        {
-            switch (stationType)
-            {
-                case GameConstants.StationType.LElectric:
-                case GameConstants.StationType.LProgramming:
-                case GameConstants.StationType.LWelding:
-                case GameConstants.StationType.CInspection:
-                case GameConstants.StationType.CPolishing:
-                case GameConstants.StationType.CTable:
-                    return true;
-                default:
-                    return false;
-
-            }
-        }
-        else
-        {
-            return false;
+            case GameConstants.StationType.HBuffing:
+            case GameConstants.StationType.HDisassembly:
+            case GameConstants.StationType.HWiring:
+                return player.botType == GameConstants.PlayerBotType.Heavy;
+                break;
+            case GameConstants.StationType.LElectric:
+            case GameConstants.StationType.LProgramming:
+            case GameConstants.StationType.LWelding:
+                return player.botType == GameConstants.PlayerBotType.Light;
+                break;
+            case GameConstants.StationType.CInspection:
+            case GameConstants.StationType.CPolishing:
+            case GameConstants.StationType.CTable:
+                return true;
+            default:
+                return false;
         }
     }
 }

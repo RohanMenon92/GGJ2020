@@ -13,7 +13,9 @@ public class GameConstants
         HBuffing,
         CPolishing,
         CTable,
-        CInspection
+        CInspection,
+        CBoxGenerator,
+        CBoxSlot
     }
 
     public enum PlayerBotType
@@ -22,12 +24,16 @@ public class GameConstants
         Heavy
     }
     
-    public enum ActionMessage
+    public enum ButtonMessage
     {
-        JoyStickPressed, // Will handle input of 2 x, y values
         Special1Pressed, // Can Handle sensitivity later
         Special2Pressed, // same
         SprintPressed // Regular true or flase value
+    }
+
+    public enum JoystickMessage
+    {
+        MoveJoystick
     }
 
 
