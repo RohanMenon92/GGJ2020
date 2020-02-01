@@ -742,6 +742,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3459209193453370826, guid: e9c3e5ff3afa4fb4488ded226ed50913,
+        type: 3}
+      propertyPath: browserStartMode
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9c3e5ff3afa4fb4488ded226ed50913, type: 3}
 --- !u!1 &648802152
@@ -3303,6 +3308,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff69f6f58db79474d83531b0fcf584b2, type: 3}
+--- !u!1 &77817899126357416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 77817900252540823, guid: ff69f6f58db79474d83531b0fcf584b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 77817899126357415}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &263114292114736927
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3520,6 +3531,56 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4667151271741231295, guid: 290f779af71d4c348b68ea694028182e,
+        type: 3}
+      propertyPath: stationType
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
+        type: 3}
+      propertyPath: processesToBeRandomized.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
+        type: 3}
+      propertyPath: processesToBeRandomized.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
+        type: 3}
+      propertyPath: processesToBeRandomized.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
+        type: 3}
+      propertyPath: processesToBeRandomized.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
+        type: 3}
+      propertyPath: processesToBeRandomized.Array.data[4]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
+        type: 3}
+      propertyPath: processesToBeRandomized.Array.data[5]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
+        type: 3}
+      propertyPath: processesToBeRandomized.Array.data[6]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
+        type: 3}
+      propertyPath: processesToBeRandomized.Array.data[7]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
+        type: 3}
+      propertyPath: boxPrefab
+      value: 
+      objectReference: {fileID: 77817899126357416}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 290f779af71d4c348b68ea694028182e, type: 3}
 --- !u!1001 &1842242893663143258
