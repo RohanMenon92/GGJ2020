@@ -135,6 +135,8 @@ MonoBehaviour:
   - LHLH
   - HCLH
   - LCHL
-  heavyProcessToBeRandomize: 030000000400000005000000
-  lightProcessToBeRandomize: 000000000100000002000000
-  commonProcessToBeRandomize: 06000000
+  heavyProcessToBeRandomize: 0300000002000000
+  lightProcessToBeRandomize: 0000000001000000
+  commonProcessToBeRandomize: 04000000
+  boxesPool: []
+  boxPrefab: {fileID: 0}
