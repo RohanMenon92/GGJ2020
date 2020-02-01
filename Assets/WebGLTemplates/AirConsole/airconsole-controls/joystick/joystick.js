@@ -7,11 +7,15 @@
  *           The callback that gets called when the Joystick is moved
  * @property {Function} touchend -
  *           The callback that gets called when the Joystick is released
- * @property {number} distance - The maximum amount of pixels a joystick can be
- *                               moved. Default: 10
+ * @property {number} distance - The maximum distance a joystick can be moved
+ *                               relative to it's size (min(x,y)).
+ *                               Default: 0.5
  * @property {number} min_delta - The minimum delta a joystick needs to have
  *                                moved before we call the callback.
- *                                Default: 0.25
+ *                                Default: 0.05
+ * @property {boolean} absolute_start - If true, the joystick does a first
+ *                                      move to the absolute position of the
+ *                                      first touch position. Default: true
  * @property {boolean} log - Debug output iff a callback is not set.
  */
 
@@ -44,9 +48,11 @@
 function Joystick(el, opts) {
   var me = this;
   opts = opts || {}
-  me.distance = opts.distance || 10;
+  me.distance_factor = opts.distance || 0.05;
   me.min_delta = opts.min_delta || 0.25;
   me.min_delta_sq = me.min_delta * me.min_delta;
+  me.absolute_start = (opts.absolute_start == undefined ?
+      true : opts.absolute_start)
 
   var log_cb = function(name) {
     return function (data) {
@@ -75,27 +81,37 @@ function Joystick(el, opts) {
     me.relative.style.position = "absolute";
     me.placeRelative(0, 0);
   }
-
+  var active =false;
   me.container.addEventListener("touchstart", function(e) {
-    var touch = e.targetTouches[0] || e.changedTouches[0] || e.touches[0];
-    me.onStart(me.getRelativePos(touch));
-    e.preventDefault();
+    if (!active) {
+      active = true;
+      var touch = e.targetTouches[0] || e.changedTouches[0] || e.touches[0];
+      me.onStart(me.getRelativePos(touch));
+      e.preventDefault();
+    }
   });
   me.container.addEventListener("touchmove", function(e) {
-    var touch = e.targetTouches[0] || e.changedTouches[0] || e.touches[0];
-    me.onMove(me.getRelativePos(touch));
-    e.preventDefault();
+    if (active) {
+      var touch = e.targetTouches[0] || e.changedTouches[0] || e.touches[0];
+      me.onMove(me.getRelativePos(touch));
+      e.preventDefault();
+    }
   });
   me.container.addEventListener("touchend", function(e) {
-    me.onEnd();
-    e.preventDefault();
+    if (active) {
+      active = false;
+      me.onEnd();
+      e.preventDefault();
+    }
   });
   var mouse_down = false;
   if (!('ontouchstart' in document.documentElement)) {
     me.container.addEventListener("mousedown", function(e) {
-      me.onStart(me.getRelativePos(e));
-      mouse_down = true;
-      e.preventDefault();
+      if (!mouse_down) {
+        me.onStart(me.getRelativePos(e));
+        mouse_down = true;
+        e.preventDefault();
+      }
     });
     me.container.addEventListener("mousemove", function(e) {
       if (mouse_down) {
@@ -104,13 +120,15 @@ function Joystick(el, opts) {
       e.preventDefault();
     });
     me.container.addEventListener("mouseup", function(e) {
-      me.onEnd();
-      mouse_down = false;
+      if (mouse_down) {
+        me.onEnd();
+        mouse_down = false;
+      }
       e.preventDefault();
     })
   }
-  me.distance_sq = Math.pow(me.distance, 2);
 }
+
 
 /**
  * Gets called when the Joystick gets touched
@@ -118,10 +136,17 @@ function Joystick(el, opts) {
  */
 Joystick.prototype.onStart = function(pos) {
   var me = this;
-  me.base = pos;
   me.last_move_call = {x: 0, y: 0};
   me.container.className += " joystick-active";
-  me.start_cb();
+  if (!me.absolute_start) {
+    me.base = pos;
+    me.start_cb();
+  } else {
+    var size = me.container.getBoundingClientRect();
+    me.base = {x: size.width / 2, y: size.height / 2};
+    me.start_cb();
+    me.onMove(pos);
+  }
 };
 
 /**
@@ -133,17 +158,19 @@ Joystick.prototype.onMove = function(pos) {
   var dx = pos.x - me.base.x;
   var dy = pos.y - me.base.y;
   var distance_sq = (dx*dx + dy*dy);
-  if (distance_sq > me.distance_sq) {
+  var max_distance = me.distance();
+  var max_distance_sq = max_distance * max_distance;
+  if (distance_sq > max_distance_sq) {
     var distance = Math.sqrt(distance_sq);
     var normalized_dx = dx / distance;
     var normalized_dy = dy / distance;
-    me.base.x = pos.x - normalized_dx * me.distance;
-    me.base.y = pos.y - normalized_dy * me.distance;
+    me.base.x = pos.x - normalized_dx * max_distance;
+    me.base.y = pos.y - normalized_dy * max_distance;
     dx = pos.x - me.base.x;
     dy = pos.y - me.base.y;
   }
   me.placeRelative(dx, dy);
-  var candidate = {"x": dx / me.distance, "y": dy / me.distance};
+  var candidate = {"x": dx / max_distance, "y": dy / max_distance};
   var call_dx = candidate.x - me.last_move_call.x;
   var call_dy = candidate.y - me.last_move_call.y;
   if ((call_dx * call_dx) + (call_dy * call_dy) >= me.min_delta_sq) {
@@ -185,8 +212,19 @@ Joystick.prototype.placeRelative = function(dx, dy) {
     return;
   }
   var style = me.relative.style;
+  var distance = me.distance();
   style.left = (dx) + "px";
-  style.right = (me.distance - dx) + "px";
+  style.right = (distance - dx) + "px";
   style.top = (dy) + "px";
-  style.bottom = (me.distance - dy) + "px";
+  style.bottom = (distance - dy) + "px";
 };
+
+/**
+ * Calculate the maximum distance a joystick is allowed to be moved.
+ * @return {Number}
+ */
+ Joystick.prototype.distance = function() {
+   var me = this;
+   var size = me.container.getBoundingClientRect();
+   return Math.min(size.width, size.height) * me.distance_factor / 2;
+}

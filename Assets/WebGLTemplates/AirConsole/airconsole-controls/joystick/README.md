@@ -1,5 +1,5 @@
 # Joystick
-An analogue relative joystick.
+An analogue absolutely placed joystick.
 
 ## Example
 
@@ -15,7 +15,7 @@ You need to place & size the joystick explicitly. It needs to have position **re
 For example:
 ```html
 <style type=text/css>
-  #your-button {
+  #your-joystick {
     position: absolute;
     left: 0px;
     top: 0px;
@@ -42,6 +42,10 @@ For example:
     
     // (Optional) distance: The maximum distance in pixels the joystick can be moved.
     "distance": 10,
+    
+    // (Optional) absolute_start: If true, the joystick jumps to the thumb, when its pressed.
+    //                            If false, it is a relative joystick
+    "absolute_start": false
     
     // (Optional) min_delta: The minimum delta a joystick needs to have moved before
     //                       the callback gets called.

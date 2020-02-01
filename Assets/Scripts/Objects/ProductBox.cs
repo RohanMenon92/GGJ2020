@@ -9,6 +9,11 @@ public class ProductBox : MonoBehaviour
     public int currentWork;
     public bool inspected;
     public float timeToRepair;
+
+    public bool isCarried;
+    public bool isPlaced;
+
+
     // Start is called before the first frame update
     void Start()
     {
