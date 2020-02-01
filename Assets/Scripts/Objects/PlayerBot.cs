@@ -10,7 +10,9 @@ public class PlayerBot : MonoBehaviour
     public GameConstants.PlayerBotType botType;
     // Start is called before the first frame update
 
-    bool joystickPosition, InteractPressed;
+    Vector2 joystickPosition;
+
+    bool special1Pressed, special2Pressed, sprintPressed;
 
     void Start()
     {
@@ -21,6 +23,10 @@ public class PlayerBot : MonoBehaviour
     public void ControlButton(string controlName, bool value)
     {
         Debug.Log("Control Button Pressed " + controlName + " Value" + value);
+
+        // Using theis to break up 
+        //TestEnum foo = (TestEnum)Enum.Parse(typeof(TestEnum), incoming, true);
+
     }
 
     public void ControlJoystickInput(string controlName, float XValue, float YValue)

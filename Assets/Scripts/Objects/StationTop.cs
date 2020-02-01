@@ -21,7 +21,7 @@ public class StationTop : MonoBehaviour
         if (isWorking && progress >= 1f)
         {
             progress += speed * Time.deltaTime;
-            currentBox.doneIndex++;
+            currentBox.currentWork++;
             isWorking = false;
         }
     }
@@ -31,7 +31,7 @@ public class StationTop : MonoBehaviour
         if (box)
         {
             currentBox = box;
-            if (box.doneIndex < box.processes.Count && box.processes[box.doneIndex] == stationType)
+            if (box.currentWork < box.processes.Count && box.processes[box.currentWork] == stationType)
             {
                 isWorking = true;
                 progress = 0f;

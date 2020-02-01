@@ -6,7 +6,7 @@ public class ProductBox : MonoBehaviour
 {
     public int boxId;
     public List<GameConstants.StationType> processes;
-    public int doneIndex;
+    public int currentWork;
     public bool inspected;
     public float timeToRepair;
     // Start is called before the first frame update

@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     }
 
     public PlayerBot OnPlayerAdded() {
-
+        // TODO Return unconnected player here
+        return null;
     }
 }
