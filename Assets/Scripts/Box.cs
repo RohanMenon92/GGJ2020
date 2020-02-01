@@ -2,13 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProductBox : MonoBehaviour
+public class Box : MonoBehaviour
 {
-    public int boxId;
-    public List<GameConstants.StationType> processes;
-    public int doneIndex;
-    public bool inspected;
-    public float timeToRepair;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +13,6 @@ public class ProductBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeToRepair -= Time.deltaTime;
+        
     }
 }
