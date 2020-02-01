@@ -22,9 +22,15 @@ public class BoxSlot : MonoBehaviour
             if(currentBox.processes.Count == currentBox.currentWork)
             {
                 // the box is done
+                numOfBoxesAccepted++;
+                // play animation
+
             }
         }
 
         //if (numOfBoxesAccepted == numsOfBoxInLevel)
+        //{ 
+
+        //}
     }
 }

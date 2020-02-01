@@ -27,12 +27,27 @@ public class BoxGenerator : MonoBehaviour
     void Update()
     {
 
+        
+    }
+
+    public void SpawnBox()
+    {
         // no box currently on generator
-        if(!thisStation.currentBox && releasingBoxIndex < boxesPool.Count) // releasingBoxIndex < numsOfBoxInLevel
+        if (!thisStation.currentBox && releasingBoxIndex < boxesPool.Count) // releasingBoxIndex < numsOfBoxInLevel
         {
             // pull out a new box
+            // do whatever else needs to be done
+            MoveBoxToTop();
+            releasingBoxIndex++;
         }
     }
+
+    public void MoveBoxToTop()
+    {
+        boxesPool[releasingBoxIndex].transform.Translate(0f, 1f, 0f);
+    }
+
+
 
     public void instantiatePool(int numsOfBoxes)
     {

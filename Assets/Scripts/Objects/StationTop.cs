@@ -60,6 +60,11 @@ public class StationTop : MonoBehaviour
         {
             isWorking = true;
         }
+
+        if (stationType == GameConstants.StationType.CBoxGenerator)
+        {
+            this.GetComponent<BoxGenerator>().SpawnBox();
+        }
     }
 
     public void Pause()
