@@ -31,7 +31,7 @@ public class StationTop : MonoBehaviour
         if (box)
         {
             currentBox = box;
-            if (box.processes[box.doneIndex] == stationType)
+            if (box.doneIndex < box.processes.Count && box.processes[box.doneIndex] == stationType)
             {
                 isWorking = true;
                 progress = 0f;

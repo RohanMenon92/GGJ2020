@@ -15,6 +15,12 @@ public class GameConstants
         CTable,
         CInspection
     }
+
+    public enum PlayerBotType
+    {
+        Light,
+        Heavy
+    }
     
     public enum ActionMessage
     {
