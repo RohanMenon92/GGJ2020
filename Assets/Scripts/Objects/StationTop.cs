@@ -22,6 +22,7 @@ public class StationTop : MonoBehaviour
         {
             progress += speed * Time.deltaTime;
             currentBox.currentWork++;
+            currentBox.inspected = true;
             isWorking = false;
         }
     }
