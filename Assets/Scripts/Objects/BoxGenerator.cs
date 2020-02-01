@@ -6,6 +6,10 @@ public class BoxGenerator : MonoBehaviour
 {
     // TODO: The first process MUST BE inspecting
     public int maxProcessesPerBox; // this should be other process +1 because the first one must be inspecting
+    public List<string> processTypeSequences;
+    public List<GameConstants.StationType> heavyProcessToBeRandomize;
+    public List<GameConstants.StationType> lightProcessToBeRandomize;
+    public List<GameConstants.StationType> commonProcessToBeRandomize;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +20,14 @@ public class BoxGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        /*if (isGameStarted)
+        {
+            if (GameManager.currentBox < GameManager.maxBoxes)
+            {
+                GameObject newBox = getNewObjectFromPool();
+                ProductBox productBox = newBox.GetComponent<ProductBox>();
+
+            }
+        }*/
     }
 }
