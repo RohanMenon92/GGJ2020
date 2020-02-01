@@ -17,6 +17,10 @@ public class PlayerBot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (carryingBox)
+        {
+            // the box should be in front of player while carrying
+            //carryingBox.transform.position = ;
+        }
     }
 }
