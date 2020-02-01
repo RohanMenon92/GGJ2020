@@ -31,7 +31,7 @@ public class GameConstants
         SprintPressed // Regular true or flase value
     }
 
-    public enum JoystickMessage
+    public enum JoystickControlMessage
     {
         MoveJoystick
     }

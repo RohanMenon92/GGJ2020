@@ -30,4 +30,9 @@ public class ProductBox : MonoBehaviour
         //    // TODO:
         //}
     }
+
+    public GameConstants.StationType GetCurrentJob()
+    {
+        return processes[currentWork];
+    }
 }

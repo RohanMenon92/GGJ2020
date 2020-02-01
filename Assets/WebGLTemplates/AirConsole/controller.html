@@ -64,10 +64,72 @@
     <script type="text/javascript" src="airconsole-controls/swipe-analog/swipe-analog.js"></script>
     <script type="text/javascript" src="airconsole-controls/swipe-pattern/swipe-pattern.js"></script>
     <script type="text/javascript" src="airconsole-controls/ctrl-generator/ctrl-generator.js"></script>
+    <script type="text/javascript" src="airconsole-controls/rate-limiter/rate-limiter.js"></script>
     <script type="text/javascript">
         var airconsole = new AirConsole({ orientation: AirConsole.ORIENTATION_LANDSCAPE });
         CtrlGenerator.setAirConsole(airconsole);
-        CtrlGenerator.generate({ "left": { "type": { "label": "Joystick", "class_name": "Joystick" } }, "middle": [], "right": [{ "type": { "label": "ButtonVertical", "class_name": "Button" }, "label": "Action 1", "key": "action1", "on_up_message": true }, { "type": { "label": "ButtonVertical", "class_name": "Button" }, "label": "Action 2", "key": "action2", "on_up_message": true }, { "type": { "label": "ButtonVertical", "class_name": "Button" }, "label": "Action 3", "key": "action3", "on_up_message": true }] });
+        CtrlGenerator.generate(
+            {
+                "left": {
+                    "type": {
+                        "label": "Joystick",
+                        "class_name": "Joystick"
+                    },
+                    "touchstart": function () {
+                        rateLimiter.message(AirConsole.SCREEN, {
+                            "joystick_left": {
+                                touch: true
+                            }
+                        });
+                    },
+                    "touchmove": function (position) {
+                        console.log(position)
+                        rateLimiter.message(AirConsole.SCREEN, {
+                            "joystick_left": {
+                                position: position
+                            }
+                        });
+                    },
+                    "touchend": function (had_direction) {
+                        rateLimiter.message(AirConsole.SCREEN, {
+                            "joystick_left": {
+                                touch: false
+                            }
+                        });
+                    },
+                    absolute_start: false
+                },
+                "middle": [],
+                "right":
+                    [
+                        {
+                            "type": {
+                                "label": "ButtonVertical",
+                                "class_name": "Button"
+                            },
+                            "label": "Action 1",
+                            "key": "action1",
+                            "on_up_message": true
+                        },
+                        {
+                            "type": {
+                                "label": "ButtonVertical",
+                                "class_name": "Button"
+                            },
+                            "label": "Action 2",
+                            "key": "action2",
+                            "on_up_message": true
+                        },
+                        {
+                            "type": {
+                                "label": "ButtonVertical",
+                                "class_name": "Button"
+                            },
+                            "label": "Action 3",
+                            "key": "action3",
+                            "on_up_message": true
+                        }]
+            });
     </script>
 </body>
 </html>
