@@ -7,6 +7,7 @@ public class PlayerBot : MonoBehaviour
     public int controllerId;
     public ProductBox carryingBox = null;
     public int movingSpeed;
+    public GameConstants.PlayerBotType botType;
     // Start is called before the first frame update
     void Start()
     {
