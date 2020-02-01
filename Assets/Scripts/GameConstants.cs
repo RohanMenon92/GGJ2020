@@ -13,7 +13,8 @@ public class GameConstants
         HBuffing,
         CPolishing,
         CTable,
-        CInspection
+        CInspection,
+        CBoxGenerator
     }
 
     public enum PlayerBotType
