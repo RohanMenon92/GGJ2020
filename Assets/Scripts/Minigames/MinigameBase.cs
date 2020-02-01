@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxGenerator : MonoBehaviour
+public class MinigameBase : MonoBehaviour
 {
-    // TODO: The first process MUST BE inspecting
-    public int maxProcessesPerBox; // this should be other process +1 because the first one must be inspecting
-
     // Start is called before the first frame update
     void Start()
     {
@@ -17,5 +14,10 @@ public class BoxGenerator : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void setupMinigame()
+    {
+
     }
 }

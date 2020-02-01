@@ -18,12 +18,15 @@ public class StationTop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isWorking && progress >= 1f)
+        if (isWorking)
         {
             progress += speed * Time.deltaTime;
-            currentBox.currentWork++;
-            currentBox.inspected = true;
-            isWorking = false;
+            if (progress >= 1f)
+            {
+                currentBox.currentWork++;
+                currentBox.inspected = true;
+                isWorking = false;
+            }
         }
     }
 
@@ -51,7 +54,7 @@ public class StationTop : MonoBehaviour
         }
     }
 
-    public void Cancel()
+    public void Pause()
     {
         isWorking = false;
     }
