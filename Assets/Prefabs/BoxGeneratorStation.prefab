@@ -124,3 +124,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxProcessesPerBox: 2
+  processTypeSequences:
+  - HL
+  - LH
+  - HC
+  - CH
+  - LC
+  - CL
+  - HLHL
+  - LHLH
+  - HCLH
+  - LCHL
+  heavyProcessToBeRandomize: 030000000400000005000000
+  lightProcessToBeRandomize: 000000000100000002000000
+  commonProcessToBeRandomize: 06000000

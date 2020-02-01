@@ -742,6 +742,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3459209193453370826, guid: e9c3e5ff3afa4fb4488ded226ed50913,
+        type: 3}
+      propertyPath: browserStartMode
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9c3e5ff3afa4fb4488ded226ed50913, type: 3}
 --- !u!1 &648802152
@@ -3520,6 +3525,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4667151271741231295, guid: 290f779af71d4c348b68ea694028182e,
+        type: 3}
+      propertyPath: stationType
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
         type: 3}
       propertyPath: processesToBeRandomized.Array.size
@@ -3528,22 +3538,12 @@ PrefabInstance:
     - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
         type: 3}
       propertyPath: heavyProcessToBeRandomize.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
         type: 3}
       propertyPath: lightProcessToBeRandomize.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
-        type: 3}
-      propertyPath: commonProcessToBeRandomize.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
-        type: 3}
-      propertyPath: processTypeSequences.Array.size
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
         type: 3}
@@ -3582,83 +3582,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
         type: 3}
-      propertyPath: heavyProcessToBeRandomize.Array.data[0]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
-        type: 3}
       propertyPath: heavyProcessToBeRandomize.Array.data[1]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
-        type: 3}
-      propertyPath: heavyProcessToBeRandomize.Array.data[2]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
-        type: 3}
-      propertyPath: lightProcessToBeRandomize.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
-        type: 3}
-      propertyPath: lightProcessToBeRandomize.Array.data[2]
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
         type: 3}
       propertyPath: commonProcessToBeRandomize.Array.data[0]
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
-        type: 3}
-      propertyPath: processTypeSequences.Array.data[0]
-      value: HL
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
-        type: 3}
-      propertyPath: processTypeSequences.Array.data[1]
-      value: LH
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
-        type: 3}
-      propertyPath: processTypeSequences.Array.data[2]
-      value: HC
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
-        type: 3}
-      propertyPath: processTypeSequences.Array.data[3]
-      value: CH
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
-        type: 3}
-      propertyPath: processTypeSequences.Array.data[4]
-      value: LC
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
-        type: 3}
-      propertyPath: processTypeSequences.Array.data[5]
-      value: CL
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
-        type: 3}
-      propertyPath: processTypeSequences.Array.data[6]
-      value: HLHL
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
-        type: 3}
-      propertyPath: processTypeSequences.Array.data[7]
-      value: LHLH
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
-        type: 3}
-      propertyPath: processTypeSequences.Array.data[8]
-      value: HCLH
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
-        type: 3}
-      propertyPath: processTypeSequences.Array.data[9]
-      value: LCHL
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 290f779af71d4c348b68ea694028182e, type: 3}

@@ -11,6 +11,9 @@ public class BoxGenerator : MonoBehaviour
     public List<GameConstants.StationType> lightProcessToBeRandomize;
     public List<GameConstants.StationType> commonProcessToBeRandomize;
 
+    public List<GameObject> boxesPool;
+    public GameObject boxPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +23,7 @@ public class BoxGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         /*if (isGameStarted)
         {
             if (GameManager.currentBox < GameManager.maxBoxes)
@@ -29,5 +33,13 @@ public class BoxGenerator : MonoBehaviour
 
             }
         }*/
+    }
+
+    public void instantiatePool(int numsOfBoxes)
+    {
+        for(int i = 0; i < numsOfBoxes; i++)
+        {
+            boxesPool.Add(Instantiate(boxPrefab));
+        }
     }
 }
