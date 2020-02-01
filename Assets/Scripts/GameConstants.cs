@@ -15,6 +15,14 @@ public class GameConstants
         CTable,
         CInspection
     }
+    
+    public enum ActionMessage
+    {
+        JoyStickPressed, // Will handle input of 2 x, y values
+        Special1Pressed, // Can Handle sensitivity later
+        Special2Pressed, // same
+        SprintPressed // Regular true or flase value
+    }
 
 
 }
