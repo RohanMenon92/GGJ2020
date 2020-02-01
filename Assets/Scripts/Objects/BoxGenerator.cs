@@ -15,6 +15,7 @@ public class BoxGenerator : MonoBehaviour
     public GameObject boxPrefab;
 
     private StationTop thisStation;
+    private int releasingBoxIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +40,7 @@ public class BoxGenerator : MonoBehaviour
         // no box currently on generator
         if(!thisStation.currentBox)
         {
-            // 
+            // pull out a new box
         }
     }
 
