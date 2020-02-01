@@ -7,7 +7,7 @@ public class PlayerBot : MonoBehaviour
 {
     public int controllerId;
     public ProductBox carryingBox = null;
-    public int movingSpeed = 10;
+    public float movingSpeed = 0.2f;
     public GameConstants.PlayerBotType botType;
     // Start is called before the first frame update
 
@@ -212,7 +212,7 @@ public class PlayerBot : MonoBehaviour
             Vector2 directionToMove = joystickPosition * (movingSpeed * (isSprinting ? 1.5f : 1f));
 
             // TODO:: Should be rigidbody physics?
-            gameObject.transform.Translate(directionToMove);
+            gameObject.transform.Translate(new Vector3(directionToMove.x, 0, directionToMove.y));
         }
     }
 }

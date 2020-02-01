@@ -313,7 +313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controllerId: 0
   carryingBox: {fileID: 0}
-  movingSpeed: 5
+  movingSpeed: 0.7
   botType: 0
 --- !u!136 &227619922
 CapsuleCollider:
@@ -744,7 +744,7 @@ PrefabInstance:
     - target: {fileID: 3459209193453370826, guid: e9c3e5ff3afa4fb4488ded226ed50913,
         type: 3}
       propertyPath: browserStartMode
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9c3e5ff3afa4fb4488ded226ed50913, type: 3}
