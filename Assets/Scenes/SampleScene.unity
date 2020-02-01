@@ -3531,11 +3531,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4667151271741231295, guid: 290f779af71d4c348b68ea694028182e,
-        type: 3}
-      propertyPath: stationType
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 1771167130560576827, guid: 290f779af71d4c348b68ea694028182e,
         type: 3}
       propertyPath: processesToBeRandomized.Array.size

@@ -14,10 +14,12 @@ public class BoxGenerator : MonoBehaviour
     public List<GameObject> boxesPool;
     public GameObject boxPrefab;
 
+    private StationTop thisStation;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        thisStation = GetComponent<StationTop>();
     }
 
     // Update is called once per frame
@@ -33,20 +35,20 @@ public class BoxGenerator : MonoBehaviour
 
             }
         }*/
+
+        // no box currently on generator
+        if(!thisStation.currentBox && )
+        {
+            // 
+        }
     }
 
     public void instantiatePool(int numsOfBoxes)
     {
         for(int i = 0; i < numsOfBoxes; i++)
         {
-            boxesPool.Add(Instantiate(boxPrefab));
-        }
-    }
-
-    public void randomizeProcesses()
-    {
-        foreach(GameObject currentBoxGameObject in boxesPool)
-        {
+            GameObject currentBoxGameObject = Instantiate(boxPrefab);
+            boxesPool.Add(currentBoxGameObject);
             ProductBox productBox = currentBoxGameObject.GetComponent<ProductBox>();
             int randomIndex = Random.Range(0, processTypeSequences.Count);
             while (processTypeSequences[randomIndex].Length > maxProcessesPerBox)
@@ -55,9 +57,9 @@ public class BoxGenerator : MonoBehaviour
             }
 
             productBox.processes.Add(GameConstants.StationType.CInspection);
-            for(int i = 0; i < processTypeSequences[randomIndex].Length; i++)
+            for (int seqIndex = 0; seqIndex < processTypeSequences[randomIndex].Length; seqIndex++)
             {
-                switch(processTypeSequences[randomIndex][i])
+                switch (processTypeSequences[randomIndex][seqIndex])
                 {
                     case 'L':
                         productBox.processes.Add(lightProcessToBeRandomize[Random.Range(0, lightProcessToBeRandomize.Count)]);
