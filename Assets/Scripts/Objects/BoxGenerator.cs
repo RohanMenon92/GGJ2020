@@ -27,18 +27,8 @@ public class BoxGenerator : MonoBehaviour
     void Update()
     {
 
-        /*if (isGameStarted)
-        {
-            if (GameManager.currentBox < GameManager.maxBoxes)
-            {
-                GameObject newBox = getNewObjectFromPool();
-                ProductBox productBox = newBox.GetComponent<ProductBox>();
-
-            }
-        }*/
-
         // no box currently on generator
-        if(!thisStation.currentBox)
+        if(!thisStation.currentBox && releasingBoxIndex < boxesPool.Count) // releasingBoxIndex < numsOfBoxInLevel
         {
             // pull out a new box
         }
