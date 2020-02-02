@@ -86,7 +86,7 @@ public class UserControl : MonoBehaviour
     }
 
     public void InputPressed(int from, JToken data) {
-        Debug.Log("Received message: " + data);
+        //Debug.Log("Received message: " + data);
 
         //When I get a message, I check if it's from any of the devices stored in my device Id dictionary
         if (AirConsole.instance.GetActivePlayerDeviceIds.Count == 2)

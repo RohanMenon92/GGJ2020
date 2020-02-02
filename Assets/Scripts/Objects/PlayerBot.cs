@@ -261,7 +261,7 @@ public class PlayerBot : MonoBehaviour
             Vector2 directionToMove = joystickPosition * (movingSpeed * (isSprinting ? 1.5f : 1f));
 
             // Set movement limits
-            if((transform.position.z < -3.5f && directionToMove.y < 0) || (transform.position.z > 40f && directionToMove.y > 0))
+            if((transform.position.z < -3.5f && directionToMove.y < 0) || (transform.position.z > 50f && directionToMove.y > 0))
             {
                 directionToMove.y = 0f;
             }
