@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using NDream.AirConsole;
 using Newtonsoft.Json.Linq;
+using UnityEngine.UI;
 
 public class UserControl : MonoBehaviour
 {
-    public Dictionary<int, PlayerBot> devicesConnected = new Dictionary<int, PlayerBot>();
-
     public PlayerBot smithBot;
     public PlayerBot sparkyBot;
+
+    public Image smithRequired;
+    public Image sparkyRequired;
 
     // Private
     GameManager gameManager;
@@ -18,7 +20,6 @@ public class UserControl : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        devicesConnected.Clear();
         gameManager = FindObjectOfType<GameManager>();
         AirConsole.instance.onReady += OnReady;
         AirConsole.instance.onConnect += AddNewPlayer;
@@ -50,6 +51,8 @@ public class UserControl : MonoBehaviour
         {
             if (AirConsole.instance.GetControllerDeviceIds().Count >= 2)
             {
+                smithBot = gameManager.OnPlayerAdded();
+                sparkyBot = gameManager.OnPlayerAdded();
                 StartGame();
             }
             else
@@ -86,9 +89,22 @@ public class UserControl : MonoBehaviour
         Debug.Log("Received message: " + data);
 
         //When I get a message, I check if it's from any of the devices stored in my device Id dictionary
-        if (devicesConnected.ContainsKey(from))
+        if (AirConsole.instance.GetActivePlayerDeviceIds.Count == 2)
         {
-            PlayerBot playerBot = devicesConnected[from];
+            int active_player = AirConsole.instance.ConvertDeviceIdToPlayerNumber(from);
+            if (active_player != -1)
+            {
+                if (active_player == 0)
+                {
+                    // do stuff with smithBot;
+                }
+                if (active_player == 1)
+                {
+                    // do stuff with sparkyBot;
+                }
+            }
+
+            PlayerBot playerBot = smithBot;
 
             if (data["joystick-left"] != null)
             {

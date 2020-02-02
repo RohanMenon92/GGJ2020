@@ -97,7 +97,6 @@
             airconsole = new AirConsole({ "orientation": "landscape" });
 
             airconsole.onActivePlayersChange = function (player_number) {
-                console.log("CODE IS BEING LOOPED");
                 updateText(player_number);
             }
             airconsole.onReady = function () {
