@@ -11,6 +11,8 @@ public class PlayerBot : MonoBehaviour
     public float rotationSpeed = 5f;
     public GameConstants.PlayerBotType botType;
     public GameObject modelReference;
+
+    public Animator animator;
     // Start is called before the first frame update
 
     bool isWorking;
@@ -26,17 +28,18 @@ public class PlayerBot : MonoBehaviour
 
     void Start()
     {
-        
     }
 
     public void GetBox(ProductBox getBox)
     {
+        animator.SetTrigger("PickUp");
         carryingBox = getBox;
         getBox.MoveBoxTo(carryBoxPos);
     }
 
     public void BoxGiven()
     {
+        animator.SetTrigger("Place");
         carryingBox = null;
     }
 
@@ -262,6 +265,9 @@ public class PlayerBot : MonoBehaviour
             }
         }
 
+        animator.SetBool("Moving", joystickMoving);
+        animator.SetBool("Working", isWorking);
+        animator.SetBool("hasBox", carryingBox != null);
         if (joystickMoving && !isWorking)
         {
             // handle movement
