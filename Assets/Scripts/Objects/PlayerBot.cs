@@ -107,7 +107,6 @@ public class PlayerBot : MonoBehaviour
             default:
                 break;
         }
-
     }
 
     public void MoveJoystick(float xVal, float yVal)
@@ -210,6 +209,14 @@ public class PlayerBot : MonoBehaviour
         if(joystickMoving)
         {
             Vector2 directionToMove = joystickPosition * (movingSpeed * (isSprinting ? 1.5f : 1f));
+
+            if(transform.position.z < -3.5f && transform.position.z > 40f)
+            {
+                directionToMove.y = 0f;
+            } else if (transform.position.x < -29f && transform.position.x > 29f)
+            {
+                directionToMove.x = 0f;
+            }
 
             // TODO:: Should be rigidbody physics?
             gameObject.transform.Translate(new Vector3(directionToMove.x, 0, directionToMove.y));
