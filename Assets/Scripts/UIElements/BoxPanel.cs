@@ -8,9 +8,15 @@ public class BoxPanel : MonoBehaviour
     public Image boxIcon;
     public Transform productionIconsTransform;
     public List<Image> productionIcons;
+
+    public Sprite[] uninspectedAssets;
+    public Sprite[] inspectedAssets;
+
+    private Image backgroundImage;
     // Start is called before the first frame update
     void Start()
     {
+        backgroundImage = GetComponent<Image>();
         //showAllProductionIcons();
     }
 
@@ -29,8 +35,18 @@ public class BoxPanel : MonoBehaviour
         }
     }
 
-    public void updateUI(List<GameConstants.StationType> processes, int currentWork)
+    public void updateUI(List<GameConstants.StationType> processes, int currentWork, bool inspected)
     {
+        if(inspected)
+        {
+            backgroundImage.sprite = inspectedAssets[0];
+            boxIcon.sprite = inspectedAssets[1];
+        }
+        else
+        {
+            backgroundImage.sprite = uninspectedAssets[0];
+            boxIcon.sprite = uninspectedAssets[1];
+        }
         for(int i = 1; i < processes.Count; i++)
         {
             GameConstants.StationType type = processes[i];

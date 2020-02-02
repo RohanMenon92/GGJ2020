@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3342500344036270402}
   - component: {fileID: 3342500344036270405}
+  - component: {fileID: 9106088601155289198}
   m_Layer: 5
   m_Name: BoxPanels
   m_TagString: Untagged
@@ -61,6 +62,25 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!95 &9106088601155289198
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3342500344036270403}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 27be4e5d57dea29469f70b5e600a8855, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4316248332994002310
 GameObject:
   m_ObjectHideFlags: 0

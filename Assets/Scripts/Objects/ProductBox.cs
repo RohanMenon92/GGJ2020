@@ -34,7 +34,7 @@ public class ProductBox : MonoBehaviour
                 boxPanel.showAllProductionIcons();
                 // remove question mark
             }
-            boxPanel.updateUI(processes, currentWork);
+            boxPanel.updateUI(processes, currentWork, inspected);
         }
     }
 
