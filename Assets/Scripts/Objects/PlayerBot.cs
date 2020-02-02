@@ -216,7 +216,6 @@ public class PlayerBot : MonoBehaviour
         // If Carrying a box
         if (isInteracting1 || isInteracting2)
         {
-            Debug.Log("IS INTERACTING");
             if (carryingBox)
             {
                 if (canInteractStation != null && isInteracting1)
@@ -225,6 +224,7 @@ public class PlayerBot : MonoBehaviour
                     carryingBox.isPlaced = true;
                     Debug.Log("Interacting with station " + canInteractStation.name);
                     canInteractStation.Interact(this, carryingBox);
+                    canInteractStation = null;
                 }
 
                 if (canInteractStation != null && isInteracting2)
@@ -233,6 +233,7 @@ public class PlayerBot : MonoBehaviour
                     carryingBox.isPlaced = true;
                     Debug.Log("Interacting with station " + canInteractStation.name);
                     canInteractStation.Interact(this, carryingBox);
+                    canInteractStation = null;
                 }
             }
             else
@@ -245,10 +246,13 @@ public class PlayerBot : MonoBehaviour
                     {
                         Debug.Log("Interacting with station without box (Completed) " + canInteractStation.name);
                         canInteractStation.Interact(this, null);
-                    } else if (canInteractStation.isWorking == false)
+                        canInteractStation = null;
+                    }
+                    else if (canInteractStation.isWorking == false)
                     {
                         Debug.Log("Interacting with station without box (non working) " + canInteractStation.name);
                         canInteractStation.Interact(this, null);
+                        canInteractStation = null;
                     }
                 }
             }
