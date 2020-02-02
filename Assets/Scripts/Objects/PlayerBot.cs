@@ -140,7 +140,7 @@ public class PlayerBot : MonoBehaviour
         // Only Move Joystick if joystick toggle is recieved
         if(joystickMoving)
         {
-            joystickPosition = new Vector2(xVal, -yVal);
+            joystickPosition = new Vector2(yVal, xVal);
         }
     }
 
@@ -294,12 +294,12 @@ public class PlayerBot : MonoBehaviour
             // TODO:: Should be rigidbody physics?
             gameObject.transform.Translate(new Vector3(directionToMove.x, 0, directionToMove.y));
 
-            Vector3 dir = new Vector3(directionToMove.x, transform.position.y, directionToMove.y);
-            dir.Normalize();
-            // slerp to the desired rotation over time
+            Vector3 dir = new Vector3(directionToMove.x, 0, directionToMove.y);
+            Quaternion rot = Quaternion.LookRotation(dir);
+                        // slerp to the desired rotation over time
+            Debug.Log("ROTATING");
+            modelReference.transform.localRotation = Quaternion.Slerp(modelReference.transform.localRotation, rot, rotationSpeed * Time.deltaTime);
 
-            float rot_y = Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, rot_y - 90, 0f);
         }
     }
 }

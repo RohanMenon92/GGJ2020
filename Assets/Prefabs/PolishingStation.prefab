@@ -132,7 +132,7 @@ MonoBehaviour:
   stationType: 4
   isWorking: 0
   progress: 0
-  speed: 100
+  speed: 3
   currentBox: {fileID: 0}
   boxTransform: {fileID: 1689595584172646780}
   progressBarPrefab: {fileID: 1441785385193726771, guid: 8726d5896f3ceb24ab6b946817178935,
@@ -176,11 +176,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2791033436133942971}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 2b5d3c0ab6842f04cad2e5c580c1d1b1,
-        type: 3}
-      propertyPath: m_Name
-      value: polisher
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2b5d3c0ab6842f04cad2e5c580c1d1b1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -250,6 +245,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2b5d3c0ab6842f04cad2e5c580c1d1b1,
+        type: 3}
+      propertyPath: m_Name
+      value: polisher
       objectReference: {fileID: 0}
     - target: {fileID: -49193250026654748, guid: 2b5d3c0ab6842f04cad2e5c580c1d1b1,
         type: 3}

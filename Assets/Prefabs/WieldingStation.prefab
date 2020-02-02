@@ -132,7 +132,7 @@ MonoBehaviour:
   stationType: 0
   isWorking: 0
   progress: 0
-  speed: 0
+  speed: 5
   currentBox: {fileID: 0}
   boxTransform: {fileID: 0}
   progressBarPrefab: {fileID: 1441785385193726771, guid: 8726d5896f3ceb24ab6b946817178935,
@@ -176,11 +176,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1842242893340884652}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 9747dd79f43824e4995342f0575d48e0,
-        type: 3}
-      propertyPath: m_Name
-      value: Table
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 9747dd79f43824e4995342f0575d48e0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -250,6 +245,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9747dd79f43824e4995342f0575d48e0,
+        type: 3}
+      propertyPath: m_Name
+      value: Table
       objectReference: {fileID: 0}
     - target: {fileID: -49193250026654748, guid: 9747dd79f43824e4995342f0575d48e0,
         type: 3}

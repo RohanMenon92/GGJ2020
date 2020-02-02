@@ -162,7 +162,7 @@ MonoBehaviour:
   stationType: 6
   isWorking: 0
   progress: 0
-  speed: 0
+  speed: 4
   currentBox: {fileID: 0}
   boxTransform: {fileID: 4387076672128434584}
   progressBarPrefab: {fileID: 1441785385193726771, guid: 8726d5896f3ceb24ab6b946817178935,

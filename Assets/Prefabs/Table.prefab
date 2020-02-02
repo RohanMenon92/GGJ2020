@@ -145,8 +145,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.75, y: 1.75, z: 1.75}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 10, y: 6, z: 5}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!114 &8625483361758359602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
   stationType: 5
   isWorking: 0
   progress: 1
-  speed: 100
+  speed: 0
   currentBox: {fileID: 0}
   boxTransform: {fileID: 2929325635966716011}
   progressBarPrefab: {fileID: 1441785385193726771, guid: 8726d5896f3ceb24ab6b946817178935,
@@ -176,11 +176,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8625483361758359601}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 9747dd79f43824e4995342f0575d48e0,
-        type: 3}
-      propertyPath: m_Name
-      value: Table
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 9747dd79f43824e4995342f0575d48e0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -250,6 +245,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9747dd79f43824e4995342f0575d48e0,
+        type: 3}
+      propertyPath: m_Name
+      value: Table
       objectReference: {fileID: 0}
     - target: {fileID: -49193250026654748, guid: 9747dd79f43824e4995342f0575d48e0,
         type: 3}
