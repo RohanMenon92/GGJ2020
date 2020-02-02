@@ -53,7 +53,7 @@ public class UserControl : MonoBehaviour
             {
                 smithBot = gameManager.GetSmithBot();
                 sparkyBot = gameManager.GetSparkyBot();
-                StartGame();
+                gameManager.startGame();
             }
             else
             {
@@ -64,11 +64,6 @@ public class UserControl : MonoBehaviour
 
     }
 
-    void StartGame()
-    {
-        AirConsole.instance.SetActivePlayers(2);
-    }
-
     void OnDisconnect(int device_id)
     {
         int active_player = AirConsole.instance.ConvertDeviceIdToPlayerNumber(device_id);
@@ -76,7 +71,8 @@ public class UserControl : MonoBehaviour
         {
             if (AirConsole.instance.GetControllerDeviceIds().Count >= 2)
             {
-                StartGame();
+                //StartGame();
+                gameManager.startGame();
             }
             else
             {
