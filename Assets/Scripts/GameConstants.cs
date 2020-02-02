@@ -31,10 +31,23 @@ public class GameConstants
         SprintPressed // Regular true or flase value
     }
 
-    public enum JoystickMessage
+    public enum JoystickControlMessage
     {
         MoveJoystick
     }
 
-
+    public enum StationAnimations
+    {
+        BoxInput,
+        BoxOutput,
+        Working,
+        Idle
+    }
+    public enum RobotAnimations
+    {
+        BoxInput,
+        BoxOutput,
+        Working,
+        Idle
+    }
 }

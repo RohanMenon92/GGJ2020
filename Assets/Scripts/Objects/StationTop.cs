@@ -37,6 +37,8 @@ public class StationTop : MonoBehaviour
 
     public void Interact(PlayerBot player, ProductBox box)
     {
+        Debug.Log("Station Top Interacted " + gameObject.name);
+
         if (box && !currentBox)
         {
             currentBox = box;
@@ -56,6 +58,11 @@ public class StationTop : MonoBehaviour
         else if(currentBox)
         {
             isWorking = true;
+        }
+
+        if (stationType == GameConstants.StationType.CBoxGenerator)
+        {
+            this.GetComponent<BoxGenerator>().SpawnBox();
         }
     }
 

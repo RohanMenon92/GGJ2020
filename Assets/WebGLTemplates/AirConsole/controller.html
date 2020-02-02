@@ -5,10 +5,33 @@
     <link rel="stylesheet" href="airconsole-controls/dpad/dpad.css">
     <link rel="stylesheet" href="airconsole-controls/joystick/joystick.css">
     <link rel="stylesheet" href="airconsole-controls/ctrl-generator/controller.css">
+
+    <script type="text/javascript">
+
+        
+
+    </script>
+    <style type="text/css">
+        @font-face {
+            font-family: 'Arial';
+        }
+
+        #player_id {
+            position: fixed;
+            top: 0%;
+            left: -25%;
+            width: 100%;
+            color: #777;
+            margin-top: 8px;
+            z-index:99;
+        }
+    </style>
 </head>
-<body>
+<body onload="init()">
 
     <div class="gamepad_container">
+
+        <div id="player_id"></div>
         <div id="left" class="left"></div>
         <div id="middle" class="middle"></div>
         <div id="right" class="right"></div>
@@ -66,38 +89,28 @@
     <script type="text/javascript" src="airconsole-controls/ctrl-generator/ctrl-generator.js"></script>
     <script type="text/javascript" src="airconsole-controls/rate-limiter/rate-limiter.js"></script>
     <script type="text/javascript">
-        var airconsole = new AirConsole({ orientation: AirConsole.ORIENTATION_LANDSCAPE });
-        CtrlGenerator.setAirConsole(airconsole);
-        CtrlGenerator.generate(
+        var airconsole;
+        /**
+         * Sets up the communication to the screen.
+         */
+        function init() {
+            airconsole = new AirConsole({ "orientation": "landscape" });
+
+            airconsole.onActivePlayersChange = function (player_number) {
+                updateText(player_number);
+            }
+            airconsole.onReady = function () {
+                updateText();
+            }
+
+            CtrlGenerator.setAirConsole(airconsole);
+            CtrlGenerator.generate(
             {
                 "left": {
                     "type": {
                         "label": "Joystick",
                         "class_name": "Joystick"
-                    },
-                    "touchstart": function () {
-                        rateLimiter.message(AirConsole.SCREEN, {
-                            "joystick_left": {
-                                touch: true
-                            }
-                        });
-                    },
-                    "touchmove": function (position) {
-                        console.log(position)
-                        rateLimiter.message(AirConsole.SCREEN, {
-                            "joystick_left": {
-                                position: position
-                            }
-                        });
-                    },
-                    "touchend": function (had_direction) {
-                        rateLimiter.message(AirConsole.SCREEN, {
-                            "joystick_left": {
-                                touch: false
-                            }
-                        });
-                    },
-                    absolute_start: false
+                    }
                 },
                 "middle": [],
                 "right":
@@ -130,6 +143,21 @@
                             "on_up_message": true
                         }]
             });
+
+        }
+
+        function updateText(player_number) {
+            var div = document.getElementById("player_id");
+            if (airconsole.getActivePlayerDeviceIds().length == 0) {
+                div.innerHTML = "Waiting for more players.";
+            } else if (player_number == undefined) {
+                div.innerHTML = "This is a 2 player game";
+            } else if (player_number == 0) {
+                div.innerHTML = "You are the player on the left";
+            } else if (player_number == 1) {
+                div.innerHTML = "You are the player on the right";
+            };
+        }
     </script>
 </body>
 </html>

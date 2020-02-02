@@ -19,6 +19,7 @@ public class BoxGenerator : MonoBehaviour
     public Transform boxPanels;
 
     private StationTop thisStation;
+    private int releasingBoxIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -32,22 +33,27 @@ public class BoxGenerator : MonoBehaviour
     void Update()
     {
 
-        /*if (isGameStarted)
-        {
-            if (GameManager.currentBox < GameManager.maxBoxes)
-            {
-                GameObject newBox = getNewObjectFromPool();
-                ProductBox productBox = newBox.GetComponent<ProductBox>();
-
-            }
-        }*/
-
-        // no box currently on generator
-        //if(!thisStation.currentBox && )
-        //{
-        //    // 
-        //}
+        
     }
+
+    public void SpawnBox()
+    {
+        // no box currently on generator
+        if (!thisStation.currentBox && releasingBoxIndex < boxesPool.Count) // releasingBoxIndex < numsOfBoxInLevel
+        {
+            // pull out a new box
+            // do whatever else needs to be done
+            MoveBoxToTop();
+            releasingBoxIndex++;
+        }
+    }
+
+    public void MoveBoxToTop()
+    {
+        boxesPool[releasingBoxIndex].transform.Translate(0f, 1f, 0f);
+    }
+
+
 
     public void instantiatePool(int numsOfBoxes)
     {
