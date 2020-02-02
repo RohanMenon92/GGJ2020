@@ -105,7 +105,8 @@ MonoBehaviour:
   speed: 0
   currentBox: {fileID: 0}
   boxTransform: {fileID: 8404629707294831629}
-  progressBarPrefab: {fileID: 0}
+  progressBarPrefab: {fileID: 1441785385193726771, guid: 8726d5896f3ceb24ab6b946817178935,
+    type: 3}
   progressBarOffsetZ: 0
   workTransform: {fileID: 0}
 --- !u!1 &6819562515120523102
@@ -235,21 +236,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3619277901226107913, guid: 4e662892bffb01d4282567a11da8ca23,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 75c7c004fb7a4604e881f29981b606e0, type: 2}
-    - target: {fileID: 5452068790998213776, guid: 4e662892bffb01d4282567a11da8ca23,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4a94a12785a9d8045bd8bb866bfee3ae, type: 2}
     - target: {fileID: 8405317065323677370, guid: 4e662892bffb01d4282567a11da8ca23,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4a94a12785a9d8045bd8bb866bfee3ae, type: 2}
+    - target: {fileID: 5452068790998213776, guid: 4e662892bffb01d4282567a11da8ca23,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4a94a12785a9d8045bd8bb866bfee3ae, type: 2}
+    - target: {fileID: 3619277901226107913, guid: 4e662892bffb01d4282567a11da8ca23,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 75c7c004fb7a4604e881f29981b606e0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e662892bffb01d4282567a11da8ca23, type: 3}
 --- !u!4 &8885459394902722475 stripped

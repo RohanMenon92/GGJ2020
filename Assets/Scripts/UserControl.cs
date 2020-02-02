@@ -53,7 +53,7 @@ public class UserControl : MonoBehaviour
             {
                 smithBot = gameManager.GetSmithBot();
                 sparkyBot = gameManager.GetSparkyBot();
-                gameManager.startGame();
+                //gameManager.startGame();
             }
             else
             {
@@ -83,7 +83,17 @@ public class UserControl : MonoBehaviour
 
     public void InputPressed(int from, JToken data) {
         //Debug.Log("Received message: " + data);
-
+        if (gameManager.mainMenuShowing)
+        {
+            if (data["action2"] != null && (bool)data["action2"]["pressed"] == true)
+            {
+                gameManager.mainMenuPanel.toggleCredit();
+            }
+            else if (data["action3"] != null && (bool)data["action3"]["pressed"] == true)
+            {
+                gameManager.mainMenuPanel.fadeToGame();
+            }
+        }
         //When I get a message, I check if it's from any of the devices stored in my device Id dictionary
         if (AirConsole.instance.GetActivePlayerDeviceIds.Count == 2)
         {
@@ -105,7 +115,7 @@ public class UserControl : MonoBehaviour
             }
 
             
-            if(playerBot != null)
+            if(playerBot != null && gameManager.isPlaying)
             {
                 //I forward the command to the relevant player script, assigned by device ID
                 if (data["joystick-left"] != null)
