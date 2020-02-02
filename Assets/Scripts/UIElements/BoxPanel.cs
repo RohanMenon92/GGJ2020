@@ -52,8 +52,8 @@ public class BoxPanel : MonoBehaviour
         for(int i = 1; i < processes.Count; i++)
         {
             GameConstants.StationType type = processes[i];
-            Image imageObject = productionIcons[i];
-            if (i < currentWork)
+            Image imageObject = productionIcons[i - 1];
+            if (currentWork > 0 && i < currentWork - 1)
             {
                 // check icon
                 imageObject.sprite = productionIconsAssets[5];

@@ -75,7 +75,7 @@ public class BoxGenerator : MonoBehaviour
             }
 
             productBox.processes.Add(GameConstants.StationType.CInspection);
-            Instantiate(productionIconsPrefab, boxPanelGameObject.GetComponent<BoxPanel>().productionIconsTransform.transform);
+            //Instantiate(productionIconsPrefab, boxPanelGameObject.GetComponent<BoxPanel>().productionIconsTransform.transform);
 
             for (int seqIndex = 0; seqIndex < processTypeSequences[randomIndex].Length; seqIndex++)
             {
@@ -99,7 +99,8 @@ public class BoxGenerator : MonoBehaviour
 
             }
             productBox.processes.Add(GameConstants.StationType.CPolishing);
-            Instantiate(productionIconsPrefab, boxPanelGameObject.GetComponent<BoxPanel>().productionIconsTransform.transform);
+            GameObject polishingProductionIcon = Instantiate(productionIconsPrefab, boxPanelGameObject.GetComponent<BoxPanel>().productionIconsTransform.transform);
+            boxPanel.productionIcons.Add(polishingProductionIcon.GetComponent<Image>());
 
 
         }
