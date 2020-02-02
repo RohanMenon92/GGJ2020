@@ -9,8 +9,12 @@ public class GameManager : MonoBehaviour
     public Transform readyText;
     public Transform disconnectText;
 
+    public int numsOfBoxes;
+
     public PlayerBot smithBot;
     public PlayerBot sparkyBot;
+
+    private BoxGenerator boxGenerator;
 
     public PlayerBot GetSmithBot()
     {
@@ -25,13 +29,20 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        boxGenerator = FindObjectOfType<BoxGenerator>();
+        startGame();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void startGame()
+    {
+        boxGenerator.instantiatePool(numsOfBoxes);
+        boxGenerator.SpawnBox();
     }
 
     public PlayerBot OnPlayerAdded() {

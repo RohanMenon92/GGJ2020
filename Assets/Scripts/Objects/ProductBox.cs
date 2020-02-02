@@ -27,6 +27,7 @@ public class ProductBox : MonoBehaviour
 
     public void MoveBoxTo(Transform targetTrans)
     {
+        Debug.Log("Move Box To" + targetTrans);
         if(movementTween != null)
         {
             movementTween.Kill(true);
@@ -34,10 +35,15 @@ public class ProductBox : MonoBehaviour
 
 
         // DoTweenAnimation Here
+        transform.SetParent(targetTrans);
 
         movementTween = DOTween.Sequence();
-        transform.DOMove(targetTrans.position, 1.0f).SetEase(Ease.InOutBack);
-        transform.DORotate(targetTrans.rotation.eulerAngles, 1.0f).SetEase(Ease.InOutBack);
+        movementTween.Insert(0, transform.DOMove(targetTrans.position, 1.0f).SetEase(Ease.InOutBack));
+        movementTween.Insert(0, transform.DORotate(targetTrans.rotation.eulerAngles, 1.0f).SetEase(Ease.InOutBack));
+
+        movementTween.Append(transform.DOLocalMove(Vector3.zero, 0.25f));
+
+        movementTween.Play();
     }
 
     public void ProcessDone(GameConstants.StationType workType)

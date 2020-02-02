@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 77817900252540818}
   - component: {fileID: 77817900252540819}
   - component: {fileID: 77817900252540820}
-  - component: {fileID: 77817900252540821}
   - component: {fileID: 77817900252540822}
   m_Layer: 0
   m_Name: Box
@@ -80,19 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &77817900252540821
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77817900252540823}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &77817900252540822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,7 +92,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxId: 0
+  boxPanel: {fileID: 0}
   processes: 
-  doneIndex: 0
+  currentWork: 0
   inspected: 0
-  timeToRepair: 0
+  isCarried: 0
+  isPlaced: 0

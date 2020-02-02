@@ -102,7 +102,7 @@ public class StationTop : MonoBehaviour
     {
         Debug.Log("Station Top Interacted " + gameObject.name);
 
-        if (stationType == GameConstants.StationType.CTable)
+        if (stationType == GameConstants.StationType.CTable || stationType == GameConstants.StationType.CBoxGenerator)
         {
             progress = 1f;
         }
@@ -112,7 +112,11 @@ public class StationTop : MonoBehaviour
             Debug.Log("Placed!");
             SetCurrentBox(incomingBox);
             player.BoxGiven();
-            player.StartWork(this);
+            if (stationType != GameConstants.StationType.CTable && stationType != GameConstants.StationType.CBoxGenerator)
+            {
+                player.StartWork(this);
+
+            }
             if (incomingBox.currentWork < incomingBox.processes.Count && incomingBox.processes[incomingBox.currentWork] == stationType && PlayerTypeCompatibleCheck(player))
             {
                 isWorking = true;
@@ -152,11 +156,9 @@ public class StationTop : MonoBehaviour
             case GameConstants.StationType.HWelding:
             case GameConstants.StationType.HWiring:
                 return player.botType == GameConstants.PlayerBotType.Heavy;
-                break;
             case GameConstants.StationType.LElectric:
             case GameConstants.StationType.LProgramming:
                 return player.botType == GameConstants.PlayerBotType.Light;
-                break;
             case GameConstants.StationType.CInspection:
             case GameConstants.StationType.CPolishing:
             case GameConstants.StationType.CTable:
