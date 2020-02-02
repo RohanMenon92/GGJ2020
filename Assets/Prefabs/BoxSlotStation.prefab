@@ -165,10 +165,11 @@ MonoBehaviour:
   progress: 0
   speed: 0
   currentBox: {fileID: 0}
-  boxTransform: {fileID: 0}
-  progressBarPrefab: {fileID: 0}
+  boxTransform: {fileID: 2276904175414101415}
+  progressBarPrefab: {fileID: 1441785385193726771, guid: 8726d5896f3ceb24ab6b946817178935,
+    type: 3}
   progressBarOffsetZ: 0
-  workTransform: {fileID: 0}
+  workTransform: {fileID: 7884994872971548910}
 --- !u!114 &3817720492369886715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,11 +190,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8376213536774925634}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 68a4ea6c6f0db944cb9cb3da0ceeea8d,
-        type: 3}
-      propertyPath: m_Name
-      value: Pipe
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 68a4ea6c6f0db944cb9cb3da0ceeea8d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -248,6 +244,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 68a4ea6c6f0db944cb9cb3da0ceeea8d,
+        type: 3}
+      propertyPath: m_Name
+      value: Pipe
       objectReference: {fileID: 0}
     - target: {fileID: 8405317065323677370, guid: 68a4ea6c6f0db944cb9cb3da0ceeea8d,
         type: 3}

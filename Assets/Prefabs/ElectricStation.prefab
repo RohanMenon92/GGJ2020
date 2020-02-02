@@ -105,7 +105,8 @@ MonoBehaviour:
   speed: 0
   currentBox: {fileID: 0}
   boxTransform: {fileID: 8404629707294831629}
-  progressBarPrefab: {fileID: 0}
+  progressBarPrefab: {fileID: 1441785385193726771, guid: 8726d5896f3ceb24ab6b946817178935,
+    type: 3}
   progressBarOffsetZ: 0
   workTransform: {fileID: 0}
 --- !u!1 &6819562515120523102
@@ -175,11 +176,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 544667392031844120}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 4e662892bffb01d4282567a11da8ca23,
-        type: 3}
-      propertyPath: m_Name
-      value: Soldern
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 4e662892bffb01d4282567a11da8ca23,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -234,6 +230,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4e662892bffb01d4282567a11da8ca23,
+        type: 3}
+      propertyPath: m_Name
+      value: Soldern
       objectReference: {fileID: 0}
     - target: {fileID: 3619277901226107913, guid: 4e662892bffb01d4282567a11da8ca23,
         type: 3}
