@@ -23,6 +23,7 @@ public class UserControl : MonoBehaviour
         AirConsole.instance.onReady += OnReady;
         AirConsole.instance.onConnect += AddNewPlayer;
         AirConsole.instance.onMessage += InputPressed;
+        AirConsole.instance.onDisconnect += OnDisconnect;
     }
 
     void OnReady(string code)
@@ -63,6 +64,22 @@ public class UserControl : MonoBehaviour
     void StartGame()
     {
         AirConsole.instance.SetActivePlayers(2);
+    }
+
+    void OnDisconnect(int device_id)
+    {
+        int active_player = AirConsole.instance.ConvertDeviceIdToPlayerNumber(device_id);
+        if (active_player != -1)
+        {
+            if (AirConsole.instance.GetControllerDeviceIds().Count >= 2)
+            {
+                StartGame();
+            }
+            else
+            {
+                AirConsole.instance.SetActivePlayers(0);
+            }
+        }
     }
 
     public void InputPressed(int from, JToken data) {
