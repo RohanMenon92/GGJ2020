@@ -23,8 +23,7 @@ public class StationTop : MonoBehaviour
             progress += speed * Time.deltaTime;
             if (progress >= 1f)
             {
-                currentBox.currentWork++;
-                currentBox.inspected = true;
+                currentBox.ProcessDone(stationType);
                 isWorking = false;
             }
         }
