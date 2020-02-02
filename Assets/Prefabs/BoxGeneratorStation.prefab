@@ -111,6 +111,7 @@ MonoBehaviour:
   progress: 0
   speed: 0
   currentBox: {fileID: 0}
+  boxTransform: {fileID: 0}
 --- !u!114 &1771167130560576827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,4 +142,9 @@ MonoBehaviour:
   lightProcessToBeRandomize: 0000000001000000
   commonProcessToBeRandomize: 04000000
   boxesPool: []
-  boxPrefab: {fileID: 0}
+  boxPrefab: {fileID: 77817900252540823, guid: ff69f6f58db79474d83531b0fcf584b2, type: 3}
+  boxPanelPrefab: {fileID: 5958158108706982184, guid: cf84d496311ceb140add85db7cd642f9,
+    type: 3}
+  productionIconsPrefab: {fileID: 6436237678806786651, guid: da38db73f54a1b141913bb15b72f46b4,
+    type: 3}
+  boxPanels: {fileID: 0}
