@@ -91,46 +91,49 @@ public class UserControl : MonoBehaviour
         //When I get a message, I check if it's from any of the devices stored in my device Id dictionary
         if (AirConsole.instance.GetActivePlayerDeviceIds.Count == 2)
         {
+            PlayerBot playerBot = null;
+
             int active_player = AirConsole.instance.ConvertDeviceIdToPlayerNumber(from);
             if (active_player != -1)
             {
                 if (active_player == 0)
                 {
+                    playerBot = smithBot;
                     // do stuff with smithBot;
                 }
                 if (active_player == 1)
                 {
+                    playerBot = sparkyBot;
                     // do stuff with sparkyBot;
                 }
             }
 
-            PlayerBot playerBot = smithBot;
-
-            if (data["joystick-left"] != null)
+            
+            if(playerBot != null)
             {
-                playerBot.ControlJoystickToggle(GameConstants.JoystickControlMessage.MoveJoystick, (bool) data["joystick-left"]["pressed"]);
-                if((bool)data["joystick-left"]["pressed"])
+                //I forward the command to the relevant player script, assigned by device ID
+                if (data["joystick-left"] != null)
                 {
-                    playerBot.ControlJoystickInput(GameConstants.JoystickControlMessage.MoveJoystick, (float)data["joystick-left"]["message"]["x"], (float)data["joystick-left"]["message"]["y"]);
+                    playerBot.ControlJoystickToggle(GameConstants.JoystickControlMessage.MoveJoystick, (bool)data["joystick-left"]["pressed"]);
+                    if ((bool)data["joystick-left"]["pressed"])
+                    {
+                        playerBot.ControlJoystickInput(GameConstants.JoystickControlMessage.MoveJoystick, (float)data["joystick-left"]["message"]["x"], (float)data["joystick-left"]["message"]["y"]);
+                    }
                 }
-            } else if(data["action1"] != null)
-            {
-                playerBot.ControlButton(GameConstants.ButtonMessage.Special1Pressed, (bool)data["action1"]["pressed"]);
+                else if (data["action1"] != null)
+                {
+                    playerBot.ControlButton(GameConstants.ButtonMessage.Special1Pressed, (bool)data["action1"]["pressed"]);
+                }
+                else if (data["action2"] != null)
+                {
+                    playerBot.ControlButton(GameConstants.ButtonMessage.Special2Pressed, (bool)data["action2"]["pressed"]);
+                }
+                else if (data["action3"] != null)
+                {
+                    playerBot.ControlButton(GameConstants.ButtonMessage.SprintPressed, (bool)data["action3"]["pressed"]);
+                }
             }
-            else if (data["action2"] != null)
-            {
-                playerBot.ControlButton(GameConstants.ButtonMessage.Special2Pressed, (bool)data["action2"]["pressed"]);
-            }
-            else if (data["action3"] != null)
-            {
-                playerBot.ControlButton(GameConstants.ButtonMessage.SprintPressed, (bool)data["action3"]["pressed"]);
-            }
-            //I forward the command to the r0levant player script, assigned by device ID
         }
-
-
-
-
     }
 
     
