@@ -1,0 +1,34 @@
+#controller2 {
+    background-color: #609eb1;
+}
+
+#joystick2 {
+    background: url(joystick2-bg.png) no-repeat center center;
+    background-size: contain;
+}
+
+#joystick2 .joystick-relative-stick {
+    background: url(joystick2-stick.png) no-repeat center center;
+    background-size: contain;
+    border: none;
+}
+
+
+#action12 {
+    display: inline-block;
+    width: 50%;
+    background: url(button12.png) no-repeat center center;
+    background-size: contain;
+}
+
+#action22 {
+    display: inline-block;
+    width: 50%;
+    background: url(button22.png) no-repeat center center;
+    background-size: contain;
+}
+
+#action32 {
+    background: url(button32.png) no-repeat center center;
+    background-size: contain;
+}

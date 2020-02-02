@@ -4,13 +4,16 @@
     <link rel="stylesheet" href="airconsole-controls/button/button.css">
     <link rel="stylesheet" href="airconsole-controls/dpad/dpad.css">
     <link rel="stylesheet" href="airconsole-controls/joystick/joystick.css">
+    <link rel="stylesheet" href="airconsole-controls/joystick/joystick1.css">
+    <link rel="stylesheet" href="airconsole-controls/joystick/joystick2.css">
     <link rel="stylesheet" href="airconsole-controls/ctrl-generator/controller.css">
 
     <script type="text/javascript">
 
-        
 
-    </script>
+
+
+/**/</script>
     <style type="text/css">
         @font-face {
             font-family: 'Arial';
@@ -23,13 +26,13 @@
             width: 100%;
             color: #777;
             margin-top: 8px;
-            z-index:99;
+            z-index: 99;
         }
     </style>
 </head>
 <body onload="init()">
 
-    <div class="gamepad_container">
+    <div class="gamepad_container" id="ctrl">
 
         <div id="player_id"></div>
         <div id="left" class="left"></div>
@@ -148,14 +151,33 @@
 
         function updateText(player_number) {
             var div = document.getElementById("player_id");
+            var controller = document.getElementById("ctrl");
+            var joystick = document.getElementById("Joystick-1");
+            var action1 = document.getElementById("ButtonVertical-2");
+            var action2 = document.getElementById("ButtonVertical-3");
+            var action3 = document.getElementById("ButtonVertical-4");
             if (airconsole.getActivePlayerDeviceIds().length == 0) {
                 div.innerHTML = "Waiting for more players.";
             } else if (player_number == undefined) {
                 div.innerHTML = "This is a 2 player game";
-            } else if (player_number == 0) {
+            }
+            // If player 1 change CSS style
+            else if (player_number == 0) {
                 div.innerHTML = "You are the player on the left";
-            } else if (player_number == 1) {
+                controller.id = "controller1";
+                joystick.id = "joystick1";
+                action1.id = "action11";
+                action2.id = "action21";
+                action3.id = "action31";
+            }
+            // If player 2 change CSS style
+            else if (player_number == 1) {
                 div.innerHTML = "You are the player on the right";
+                controller.id = "controller2"
+                joystick.id = "joystick2";
+                action1.id = "action12";
+                action2.id = "action22";
+                action3.id = "action32";
             };
         }
     </script>
