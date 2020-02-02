@@ -114,7 +114,7 @@ public class PlayerBot : MonoBehaviour
         // Only Move Joystick if joystick toggle is recieved
         if(joystickMoving)
         {
-            joystickPosition = new Vector2(xVal, yVal);
+            joystickPosition = new Vector2(xVal, -yVal);
         }
     }
 
@@ -142,10 +142,10 @@ public class PlayerBot : MonoBehaviour
         if (isCarryingBox() && collStationTop != null)
         {
             // Is the correct Job
-            if (carryingBox.GetCurrentJob() == collStationTop.stationType)
-            {
+            //if (carryingBox.GetCurrentJob() == collStationTop.stationType)
+            //{
                 canInteractStation = collStationTop;
-            }
+            //}
         }
 
         ProductBox collBox = collision.gameObject.GetComponent<ProductBox>();
