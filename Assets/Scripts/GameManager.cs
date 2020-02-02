@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject resultsPanel;
-    public GameObject mainMenuPanel;
+    public MainMenuPanel mainMenuPanel;
     public Transform howToPlayPanel;
     public Transform readyText;
     public Transform disconnectText;
@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public int numsOfBoxes;
     public float levelTime;
     public bool isPlaying;
+    public bool mainMenuShowing = true;
 
     public PlayerBot smithBot;
     public PlayerBot sparkyBot;
