@@ -32,7 +32,8 @@ public class UserControl : MonoBehaviour
 
     public void AddNewPlayer(int deviceID)
     {
-        Debug.Log("New Player Added " + deviceID);
+        /*
+         Debug.Log("New Player Added " + deviceID);
 
         if (devicesConnected.ContainsKey(deviceID))
         {
@@ -42,7 +43,26 @@ public class UserControl : MonoBehaviour
         PlayerBot newPlayerBot = gameManager.OnPlayerAdded();
 
         devicesConnected.Add(deviceID, newPlayerBot);
+        */
 
+        if (AirConsole.instance.GetActivePlayerDeviceIds.Count == 0)
+        {
+            if (AirConsole.instance.GetControllerDeviceIds().Count >= 2)
+            {
+                StartGame();
+            }
+            else
+            {
+                //uiText.text = "NEED MORE PLAYERS";
+            }
+        }
+
+
+    }
+
+    void StartGame()
+    {
+        AirConsole.instance.SetActivePlayers(2);
     }
 
     public void InputPressed(int from, JToken data) {
