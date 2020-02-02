@@ -9,6 +9,7 @@ public class StationTop : MonoBehaviour
     public float progress;
     public float speed;
     public ProductBox currentBox;
+    public Transform boxTransform;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,33 +32,40 @@ public class StationTop : MonoBehaviour
         if(currentBox)
         {
             // make the box place on the top of station
-            currentBox.transform.position = new Vector3(transform.position.x, transform.position.y + 0.75f, transform.position.z);
+            currentBox.transform.position = boxTransform.position;
         }
     }
 
-    public void Interact(PlayerBot player, ProductBox box)
+    public void Interact(PlayerBot player, ProductBox incomingBox)
     {
         Debug.Log("Station Top Interacted " + gameObject.name);
 
-        if (box && !currentBox)
+        if (stationType == GameConstants.StationType.CTable)
         {
-            currentBox = box;
+            progress = 1f;
+        }
+
+        if (incomingBox && !currentBox)
+        {
+            Debug.Log("Placed!");
+            currentBox = incomingBox;
             player.carryingBox = null;
-            if (box.currentWork < box.processes.Count && box.processes[box.currentWork] == stationType && PlayerTypeCompatibleCheck(player))
+            if (incomingBox.currentWork < incomingBox.processes.Count && incomingBox.processes[incomingBox.currentWork] == stationType && PlayerTypeCompatibleCheck(player))
             {
                 isWorking = true;
                 progress = 0f;
             }
-
+        }
+        else if(!incomingBox && currentBox)
+        {
+            
             if (!isWorking && progress >= 1f)
             {
                 player.carryingBox = currentBox;
                 currentBox = null;
+                Debug.Log("Got!");
             }
-        }
-        else if(currentBox)
-        {
-            isWorking = true;
+            //isWorking = true;
         }
 
         if (stationType == GameConstants.StationType.CBoxGenerator)
