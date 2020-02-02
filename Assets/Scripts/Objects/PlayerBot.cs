@@ -52,7 +52,7 @@ public class PlayerBot : MonoBehaviour
     // Control Inputs
     public void ControlButton(GameConstants.ButtonMessage buttonControl, bool value)
     {
-        Debug.Log("Control Button Pressed " + buttonControl + " Value" + value);
+        //Debug.Log("Control Button Pressed " + buttonControl + " Value" + value);
 
         switch (buttonControl)
         {
@@ -118,7 +118,7 @@ public class PlayerBot : MonoBehaviour
 
     public void ControlJoystickToggle(GameConstants.JoystickControlMessage joystickControl, bool value)
     {
-        Debug.Log("Control Joystick Toggle " + joystickControl.ToString() + " Value" + value);
+        //Debug.Log("Control Joystick Toggle " + joystickControl.ToString() + " Value" + value);
                
         switch (joystickControl)
         {
@@ -162,7 +162,7 @@ public class PlayerBot : MonoBehaviour
 
         if (collStationTop != null)
         {
-            // Is the correct Job
+            Debug.Log("Setting Can Interact " + canInteractStation);
             canInteractStation = collStationTop;
         }
     }
@@ -197,6 +197,7 @@ public class PlayerBot : MonoBehaviour
 
         if (collStation != null && collStation == canInteractStation)
         {
+            Debug.Log("Setting Cannot Interact " + canInteractStation);
             canInteractStation = null;
         }
     }
@@ -212,12 +213,14 @@ public class PlayerBot : MonoBehaviour
         // If Carrying a box
         if (isInteracting1 || isInteracting2)
         {
+            Debug.Log("IS INTERACTING");
             if (carryingBox)
             {
                 if (canInteractStation != null && isInteracting1)
                 {
                     carryingBox.isCarried = false;
                     carryingBox.isPlaced = true;
+                    Debug.Log("Interacting with station " + canInteractStation.name);
                     canInteractStation.Interact(this, carryingBox);
                 }
 
@@ -225,19 +228,23 @@ public class PlayerBot : MonoBehaviour
                 {
                     carryingBox.isCarried = false;
                     carryingBox.isPlaced = true;
+                    Debug.Log("Interacting with station " + canInteractStation.name);
                     canInteractStation.Interact(this, carryingBox);
                 }
             }
             else
             {
+                Debug.Log(canInteractStation != null);
                 // If not carrying a box
-                if (canInteractStation != null && canInteractStation.currentBox != null)
+                if (canInteractStation != null)
                 {
                     if(canInteractStation.progress >= 1f)
                     {
+                        Debug.Log("Interacting with station without box (Completed) " + canInteractStation.name);
                         canInteractStation.Interact(this, null);
                     } else if (canInteractStation.isWorking == false)
                     {
+                        Debug.Log("Interacting with station without box (non working) " + canInteractStation.name);
                         canInteractStation.Interact(this, null);
                     }
                 }
@@ -270,13 +277,11 @@ public class PlayerBot : MonoBehaviour
             }
 
             // TODO:: Should be rigidbody physics?
-            Debug.Log("TRANSLATING");
             gameObject.transform.Translate(new Vector3(directionToMove.x, 0, directionToMove.y));
 
             Vector3 dir = new Vector3(directionToMove.x, transform.position.y, directionToMove.y);
             Quaternion rot = Quaternion.LookRotation(dir);
             // slerp to the desired rotation over time
-            Debug.Log("ROTATING");
             modelReference.transform.localRotation = Quaternion.Slerp(modelReference.transform.localRotation, rot, rotationSpeed * Time.deltaTime);
         }
     }
