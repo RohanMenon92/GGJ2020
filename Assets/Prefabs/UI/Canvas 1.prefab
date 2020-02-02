@@ -132,7 +132,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -101.52832, y: 0, z: 0, w: 0}
+  m_margin: {x: -173.13379, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 5495566229737170761}
     characterCount: 25
@@ -763,6 +763,7 @@ GameObject:
   - component: {fileID: 5119898886398529495}
   - component: {fileID: 3941530166500696613}
   - component: {fileID: 5336870448667063978}
+  - component: {fileID: 6876369080329137300}
   m_Layer: 5
   m_Name: MainMenuPanel
   m_TagString: Untagged
@@ -847,7 +848,26 @@ MonoBehaviour:
   fading: 0
   gManager: {fileID: 0}
   firstGuideText: {fileID: 5495566229737170761}
-  firstGuideIcon: {fileID: 0}
+  firstGuideIcon: {fileID: 1377737194692924078}
+--- !u!95 &6876369080329137300
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2508074308596568016}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7a8b97367267caf4398da180b2cd64c6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2852904805459714626
 GameObject:
   m_ObjectHideFlags: 0
@@ -1415,7 +1435,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -101.52832, y: 0, z: 0, w: 0}
+  m_margin: {x: -172.61029, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 7618802625376353713}
     characterCount: 31
