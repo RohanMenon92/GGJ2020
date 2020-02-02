@@ -112,6 +112,9 @@ MonoBehaviour:
   speed: 0
   currentBox: {fileID: 0}
   boxTransform: {fileID: 0}
+  progressBarPrefab: {fileID: 1441785385193726771, guid: 8726d5896f3ceb24ab6b946817178935,
+    type: 3}
+  progressBarOffsetZ: 1.5
 --- !u!114 &1771167130560576827
 MonoBehaviour:
   m_ObjectHideFlags: 0
