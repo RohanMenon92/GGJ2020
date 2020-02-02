@@ -35,11 +35,13 @@ public class PlayerBot : MonoBehaviour
         animator.SetTrigger("PickUp");
         carryingBox = getBox;
         getBox.MoveBoxTo(carryBoxPos);
+        animator.SetBool("hasBox", true);
     }
 
     public void BoxGiven()
     {
         animator.SetTrigger("Place");
+        animator.SetBool("hasBox", false);
         carryingBox = null;
     }
 
@@ -269,9 +271,12 @@ public class PlayerBot : MonoBehaviour
             }
         }
 
-        animator.SetBool("Moving", joystickMoving);
-        animator.SetBool("Working", isWorking);
-        animator.SetBool("hasBox", carryingBox != null);
+        if (animator)
+        {
+            animator.SetBool("Moving", joystickMoving);
+            animator.SetBool("Working", isWorking);
+        }
+        //animator.SetBool("hasBox", carryingBox != null);
         if (joystickMoving && !isWorking)
         {
             // handle movement
