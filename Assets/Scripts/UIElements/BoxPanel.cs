@@ -12,6 +12,8 @@ public class BoxPanel : MonoBehaviour
     public Sprite[] uninspectedAssets;
     public Sprite[] inspectedAssets;
 
+    public Sprite[] productionIconsAssets;
+
     private Image backgroundImage;
     // Start is called before the first frame update
     void Start()
@@ -54,6 +56,7 @@ public class BoxPanel : MonoBehaviour
             if (i < currentWork)
             {
                 // check icon
+                imageObject.sprite = productionIconsAssets[5];
             }
             else
             {
@@ -61,23 +64,19 @@ public class BoxPanel : MonoBehaviour
                 switch (type)
                 {
                     case GameConstants.StationType.LElectric:
-                        imageObject.color = new Color(0.5f, 0f, 0f);
+                        imageObject.sprite = productionIconsAssets[1];
                         Debug.Log("Electric Task");
                         break;
                     case GameConstants.StationType.LProgramming:
-                        imageObject.color = new Color(0.5f, 0.5f, 0f);
+                        imageObject.sprite = productionIconsAssets[2];
                         Debug.Log("Programming Task");
                         break;
                     case GameConstants.StationType.HWelding:
-                        imageObject.color = new Color(0.5f, 0.5f, 0.5f);
+                        imageObject.sprite = productionIconsAssets[3];
                         Debug.Log("Welding Task");
                         break;
-                    case GameConstants.StationType.HWiring:
-                        imageObject.color = new Color(0f, 0.5f, 0.5f);
-                        Debug.Log("Wiring Task");
-                        break;
                     case GameConstants.StationType.CPolishing:
-                        imageObject.color = new Color(0f, 0f, 0.5f);
+                        imageObject.sprite = productionIconsAssets[4];
                         Debug.Log("Polishing Task");
                         break;
                 }
