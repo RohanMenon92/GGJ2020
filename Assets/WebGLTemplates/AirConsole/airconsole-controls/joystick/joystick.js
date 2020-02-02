@@ -48,7 +48,7 @@
 function Joystick(el, opts) {
   var me = this;
   opts = opts || {}
-  me.distance_factor = opts.distance || 0.05;
+  me.distance_factor = opts.distance || 0.5;
   me.min_delta = opts.min_delta || 0.25;
   me.min_delta_sq = me.min_delta * me.min_delta;
   me.absolute_start = (opts.absolute_start == undefined ?

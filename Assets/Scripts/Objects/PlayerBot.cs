@@ -295,9 +295,11 @@ public class PlayerBot : MonoBehaviour
             gameObject.transform.Translate(new Vector3(directionToMove.x, 0, directionToMove.y));
 
             Vector3 dir = new Vector3(directionToMove.x, transform.position.y, directionToMove.y);
-            Quaternion rot = Quaternion.LookRotation(dir);
+            dir.Normalize();
             // slerp to the desired rotation over time
-            modelReference.transform.localRotation = Quaternion.Slerp(modelReference.transform.localRotation, rot, rotationSpeed * Time.deltaTime);
+
+            float rot_y = Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, rot_y - 90, 0f);
         }
     }
 }
