@@ -549,6 +549,11 @@ PrefabInstance:
       propertyPath: m_Pivot.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4719402037464128079, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 4719402037464128078, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
         type: 3}
       propertyPath: m_IsActive
@@ -569,6 +574,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4719402037464128073, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.16981131
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719402037464128073, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.16981131
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719402037464128073, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.16981131
+      objectReference: {fileID: 0}
     - target: {fileID: 4719402037874939066, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
         type: 3}
       propertyPath: m_fontAsset
@@ -581,6 +601,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -2809546667482347409, guid: feb88c6ecbdea0f40a2ec7b56793160e,
         type: 2}
+    - target: {fileID: 4719402038764919239, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4719402038769476245, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -641,6 +666,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4719402039145501623, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4719402038796325428, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -690,6 +720,38 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719402038798648445, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: feb88c6ecbdea0f40a2ec7b56793160e,
+        type: 2}
+    - target: {fileID: 4719402038798648445, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2809546667482347409, guid: feb88c6ecbdea0f40a2ec7b56793160e,
+        type: 2}
+    - target: {fileID: 4719402038798648445, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
+        type: 3}
+      propertyPath: m_text
+      value: You win!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719402038798648445, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719402038798648445, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719402038798648445, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4719402037430611391, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
         type: 3}
@@ -778,7 +840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf4737f217d53c47bd5a2b9b384f5d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultsPanel: {fileID: 1319285002}
+  resultsPanel: {fileID: 1582380708}
   howToPlayPanel: {fileID: 939029718}
   readyText: {fileID: 687997652}
   disconnectText: {fileID: 673495552}
@@ -1497,12 +1559,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &1319285002 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4719402037464128079, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
-    type: 3}
-  m_PrefabInstance: {fileID: 370592783}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1380724449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,6 +1805,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4667151271741231294, guid: 290f779af71d4c348b68ea694028182e,
     type: 3}
   m_PrefabInstance: {fileID: 275817345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1582380708 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4719402037464128078, guid: 7de22cb9bddc0654eaa422fe7d2266f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 370592783}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1690097643
 GameObject:

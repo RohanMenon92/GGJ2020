@@ -7,10 +7,12 @@ public class BoxSlot : MonoBehaviour
     public int numOfBoxesAccepted = 0;
 
     private StationTop thisStation;
+    private GameManager gManager;
     // Start is called before the first frame update
     void Start()
     {
         thisStation = GetComponent<StationTop>();
+        gManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -28,9 +30,9 @@ public class BoxSlot : MonoBehaviour
             }
         }
 
-        //if (numOfBoxesAccepted == numsOfBoxInLevel)
-        //{ 
-
-        //}
+        if (numOfBoxesAccepted == gManager.numsOfBoxes)
+        {
+            gManager.showResult();
+        }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public Transform resultsPanel;
+    public GameObject resultsPanel;
     public Transform howToPlayPanel;
     public Transform readyText;
     public Transform disconnectText;
@@ -48,5 +48,10 @@ public class GameManager : MonoBehaviour
     public PlayerBot OnPlayerAdded() {
         // TODO Return unconnected player here
         return FindObjectOfType<PlayerBot>();
+    }
+
+    public void showResult()
+    {
+        resultsPanel.SetActive(true);
     }
 }
