@@ -25,7 +25,6 @@ public class BoxGenerator : MonoBehaviour
     void Start()
     {
         thisStation = GetComponent<StationTop>();
-        instantiatePool(3);
 
     }
 
