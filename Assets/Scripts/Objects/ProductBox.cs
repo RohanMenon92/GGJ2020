@@ -5,6 +5,8 @@ using UnityEngine;
 public class ProductBox : MonoBehaviour
 {
     public int boxId;
+    public BoxPanel boxPanel = null;
+
     public List<GameConstants.StationType> processes;
     public int currentWork;
     public bool inspected;
@@ -19,6 +21,21 @@ public class ProductBox : MonoBehaviour
     void Start()
     {
         
+    }
+
+    public void ProcessDone(GameConstants.StationType workType)
+    {
+        currentWork++;
+        inspected = true;
+        if(boxPanel)
+        {
+            if (workType == GameConstants.StationType.CInspection)
+            {
+                boxPanel.showAllProductionIcons();
+                // remove question mark
+            }
+            boxPanel.updateUI(processes, currentWork);
+        }
     }
 
     // Update is called once per frame

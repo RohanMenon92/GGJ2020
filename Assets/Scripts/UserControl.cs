@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using NDream.AirConsole;
 using Newtonsoft.Json.Linq;
+using UnityEngine.UI;
 
 public class UserControl : MonoBehaviour
 {
-    public Dictionary<int, PlayerBot> devicesConnected = new Dictionary<int, PlayerBot>();
-
     public PlayerBot smithBot;
     public PlayerBot sparkyBot;
+
+    public Image smithRequired;
+    public Image sparkyRequired;
 
     // Private
     GameManager gameManager;
@@ -18,11 +20,11 @@ public class UserControl : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        devicesConnected.Clear();
         gameManager = FindObjectOfType<GameManager>();
         AirConsole.instance.onReady += OnReady;
         AirConsole.instance.onConnect += AddNewPlayer;
         AirConsole.instance.onMessage += InputPressed;
+        AirConsole.instance.onDisconnect += OnDisconnect;
     }
 
     void OnReady(string code)
@@ -32,7 +34,8 @@ public class UserControl : MonoBehaviour
 
     public void AddNewPlayer(int deviceID)
     {
-        Debug.Log("New Player Added " + deviceID);
+        /*
+         Debug.Log("New Player Added " + deviceID);
 
         if (devicesConnected.ContainsKey(deviceID))
         {
@@ -42,16 +45,66 @@ public class UserControl : MonoBehaviour
         PlayerBot newPlayerBot = gameManager.OnPlayerAdded();
 
         devicesConnected.Add(deviceID, newPlayerBot);
+        */
 
+        if (AirConsole.instance.GetActivePlayerDeviceIds.Count == 0)
+        {
+            if (AirConsole.instance.GetControllerDeviceIds().Count >= 2)
+            {
+                smithBot = gameManager.OnPlayerAdded();
+                sparkyBot = gameManager.OnPlayerAdded();
+                StartGame();
+            }
+            else
+            {
+                //uiText.text = "NEED MORE PLAYERS";
+            }
+        }
+
+
+    }
+
+    void StartGame()
+    {
+        AirConsole.instance.SetActivePlayers(2);
+    }
+
+    void OnDisconnect(int device_id)
+    {
+        int active_player = AirConsole.instance.ConvertDeviceIdToPlayerNumber(device_id);
+        if (active_player != -1)
+        {
+            if (AirConsole.instance.GetControllerDeviceIds().Count >= 2)
+            {
+                StartGame();
+            }
+            else
+            {
+                AirConsole.instance.SetActivePlayers(0);
+            }
+        }
     }
 
     public void InputPressed(int from, JToken data) {
         Debug.Log("Received message: " + data);
 
         //When I get a message, I check if it's from any of the devices stored in my device Id dictionary
-        if (devicesConnected.ContainsKey(from))
+        if (AirConsole.instance.GetActivePlayerDeviceIds.Count == 2)
         {
-            PlayerBot playerBot = devicesConnected[from];
+            int active_player = AirConsole.instance.ConvertDeviceIdToPlayerNumber(from);
+            if (active_player != -1)
+            {
+                if (active_player == 0)
+                {
+                    // do stuff with smithBot;
+                }
+                if (active_player == 1)
+                {
+                    // do stuff with sparkyBot;
+                }
+            }
+
+            PlayerBot playerBot = smithBot;
 
             if (data["joystick-left"] != null)
             {

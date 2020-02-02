@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BoxGenerator : MonoBehaviour
 {
@@ -11,8 +12,11 @@ public class BoxGenerator : MonoBehaviour
     public List<GameConstants.StationType> lightProcessToBeRandomize;
     public List<GameConstants.StationType> commonProcessToBeRandomize;
 
-    public List<GameObject> boxesPool;
+    public List<ProductBox> boxesPool;
     public GameObject boxPrefab;
+    public GameObject boxPanelPrefab;
+    public GameObject productionIconsPrefab;
+    public Transform boxPanels;
 
     private StationTop thisStation;
     private int releasingBoxIndex;
@@ -21,6 +25,8 @@ public class BoxGenerator : MonoBehaviour
     void Start()
     {
         thisStation = GetComponent<StationTop>();
+        instantiatePool(3);
+
     }
 
     // Update is called once per frame
@@ -53,9 +59,13 @@ public class BoxGenerator : MonoBehaviour
     {
         for(int i = 0; i < numsOfBoxes; i++)
         {
+            //Instatiate Boxpanel
+            GameObject boxPanelGameObject = Instantiate(boxPanelPrefab, boxPanels);
             GameObject currentBoxGameObject = Instantiate(boxPrefab);
-            boxesPool.Add(currentBoxGameObject);
             ProductBox productBox = currentBoxGameObject.GetComponent<ProductBox>();
+            BoxPanel boxPanel = boxPanelGameObject.GetComponent<BoxPanel>();
+            productBox.boxPanel = boxPanel;
+            boxesPool.Add(productBox);
             int randomIndex = Random.Range(0, processTypeSequences.Count);
             while (processTypeSequences[randomIndex].Length > maxProcessesPerBox)
             {
@@ -63,6 +73,8 @@ public class BoxGenerator : MonoBehaviour
             }
 
             productBox.processes.Add(GameConstants.StationType.CInspection);
+            Instantiate(productionIconsPrefab, boxPanelGameObject.GetComponent<BoxPanel>().productionIconsTransform.transform);
+
             for (int seqIndex = 0; seqIndex < processTypeSequences[randomIndex].Length; seqIndex++)
             {
                 switch (processTypeSequences[randomIndex][seqIndex])
@@ -76,8 +88,18 @@ public class BoxGenerator : MonoBehaviour
                     default:
                         break;
                 }
+
+                //                Instantiate(prefabIcon, transform) with parent as boxpanel;
+                GameObject productionIcon = Instantiate(productionIconsPrefab, boxPanel.productionIconsTransform.transform);
+                boxPanel.productionIcons.Add(productionIcon.GetComponent<Image>());
+
+
+
             }
             productBox.processes.Add(GameConstants.StationType.CPolishing);
+            Instantiate(productionIconsPrefab, boxPanelGameObject.GetComponent<BoxPanel>().productionIconsTransform.transform);
+
+
         }
     }
 }
