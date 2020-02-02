@@ -45,9 +45,12 @@ public class GameConstants
     }
     public enum RobotAnimations
     {
-        BoxInput,
-        BoxOutput,
+        Moving,
+        MovingBox,
+        Idle,
+        IdleBox,
+        Interact,
         Working,
-        Idle
+        WorkingAction
     }
 }
