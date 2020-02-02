@@ -5,13 +5,25 @@
 #joystick1 {
     background: url(joystick1-bg.png) no-repeat center center;
     background-size: contain;
+    top: 5%;
+  width: 100%;
+  height: 90%;
+  border-radius: 100%;
 }
 
-    #joystick1 .joystick-relative-stick {
-        background: url(joystick1-stick.png) no-repeat center center;
-        background-size: contain;
-        border: none;
-    }
+#joystick1 .joystick-relative-stick {
+    background: url(joystick1-stick.png) no-repeat center center;
+    background-size: contain;
+    border: none;
+    left: 50%;
+  top: 50%;
+  width: 50%;
+  height: 50;
+  padding-bottom: 50%;
+  margin-left: -25%;
+  margin-top: -25%;
+  border-radius: 100%;
+}
 
 #action11 {
     display: inline-block;

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ public class StationTop : MonoBehaviour
     private Canvas canvas;
     private RectTransform canvasRect;
     public float progressBarOffsetZ;
+    public Transform workTransform;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +40,30 @@ public class StationTop : MonoBehaviour
         progressBar.transform.localPosition = canvasPos;
     }
 
+
+    void BoxDone()
+    {
+        currentBox.ProcessDone(stationType);
+        isWorking = false;
+    }
+
+    public void SetCurrentBox(ProductBox incomingBox)
+    {
+        currentBox = incomingBox;
+        // make the box place on the top of station
+
+        incomingBox.MoveBoxTo(boxTransform);
+
+        currentBox.transform.position = boxTransform.position;
+    }
+
+    void CurrBoxPickedUp(PlayerBot player)
+    {
+        player.GetBox(currentBox);
+        currentBox = null;
+        Debug.Log("Got!");
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -52,8 +79,7 @@ public class StationTop : MonoBehaviour
             }
             if (progress >= 1f)
             {
-                currentBox.ProcessDone(stationType);
-                isWorking = false;
+                BoxDone();
             }
         }
         else
@@ -84,8 +110,9 @@ public class StationTop : MonoBehaviour
         if (incomingBox && !currentBox)
         {
             Debug.Log("Placed!");
-            currentBox = incomingBox;
-            player.carryingBox = null;
+            SetCurrentBox(incomingBox);
+            player.BoxGiven();
+            player.StartWork(this);
             if (incomingBox.currentWork < incomingBox.processes.Count && incomingBox.processes[incomingBox.currentWork] == stationType && PlayerTypeCompatibleCheck(player))
             {
                 isWorking = true;
@@ -94,14 +121,17 @@ public class StationTop : MonoBehaviour
         }
         else if(!incomingBox && currentBox)
         {
-            
             if (!isWorking && progress >= 1f)
             {
-                player.carryingBox = currentBox;
-                currentBox = null;
-                Debug.Log("Got!");
+                if(progress >= 1f)
+                {
+                    CurrBoxPickedUp(player);
+                } else
+                {
+                    isWorking = true;
+                    player.StartWork(this);
+                }
             }
-            //isWorking = true;
         }
 
         if (stationType == GameConstants.StationType.CBoxGenerator)

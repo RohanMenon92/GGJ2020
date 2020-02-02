@@ -38,8 +38,6 @@ public class GameConstants
 
     public enum StationAnimations
     {
-        BoxInput,
-        BoxOutput,
         Working,
         Idle
     }
@@ -50,7 +48,6 @@ public class GameConstants
         Idle,
         IdleBox,
         Interact,
-        Working,
-        WorkingAction
+        Working
     }
 }

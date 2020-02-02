@@ -1,31 +1,52 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using DG.Tweening;
+using System;
 using UnityEngine;
 
 public class PlayerBot : MonoBehaviour
 {
     public int controllerId;
     public ProductBox carryingBox = null;
+    public Transform carryBoxPos;
     public float movingSpeed = 0.2f;
+    public float rotationSpeed = 5f;
     public GameConstants.PlayerBotType botType;
+    public GameObject modelReference;
     // Start is called before the first frame update
+
+    bool isWorking;
+    StationTop workStation;
 
     bool isSprinting, isInteracting1, isInteracting2;
     bool special1Pressed, special2Pressed, sprintPressed;
     bool joystickMoving;
 
-    ProductBox canInteractBox;
     StationTop canInteractStation;
-
-    GameObject interactCollider;
 
     Vector2 joystickPosition;
 
-    
     void Start()
     {
         
+    }
+
+    public void GetBox(ProductBox getBox)
+    {
+        carryingBox = getBox;
+        getBox.MoveBoxTo(carryBoxPos);
+    }
+
+    public void BoxGiven()
+    {
+        carryingBox = null;
+    }
+
+    public void StartWork(StationTop moveTo)
+    {
+        isWorking = true;
+        workStation = moveTo;
+        this.transform.DOMove(moveTo.workTransform.position, 0.5f).SetEase(Ease.InOutSine);
+        this.transform.DORotate(moveTo.workTransform.rotation.eulerAngles, 0.5f).SetEase(Ease.InOutSine);
+        // Switch to working animation
     }
 
     // Control Inputs
@@ -139,20 +160,33 @@ public class PlayerBot : MonoBehaviour
 
         StationTop collStationTop = collision.gameObject.GetComponent<StationTop>();
 
-        if (isCarryingBox() && collStationTop != null)
+        if (collStationTop != null)
         {
             // Is the correct Job
-            //if (carryingBox.GetCurrentJob() == collStationTop.stationType)
-            //{
-                canInteractStation = collStationTop;
-            //}
+            canInteractStation = collStationTop;
         }
+    }
 
-        ProductBox collBox = collision.gameObject.GetComponent<ProductBox>();
+    void OnCollisionStay(Collision collision)
+    {
+        // Set the station that can be interacted with and the box that can be interacted with
 
-        if (!isCarryingBox() && collBox != null)
+        StationTop collStationTop = collision.gameObject.GetComponent<StationTop>();
+
+        if(collStationTop != null && canInteractStation != null)
         {
-            canInteractBox = collBox;
+            if (collStationTop == canInteractStation)
+            {
+                // No need to check if station is the same
+                return;
+            }
+
+            float collStationDistance = Vector3.Distance(collStationTop.transform.position, transform.position);
+            float currStationDistance = Vector3.Distance(canInteractStation.transform.position, transform.position);
+            if (collStationDistance < currStationDistance)
+            {
+                canInteractStation = collStationTop;
+            }
         }
     }
 
@@ -165,13 +199,6 @@ public class PlayerBot : MonoBehaviour
         {
             canInteractStation = null;
         }
-
-        ProductBox collBox = collision.gameObject.GetComponent<ProductBox>();
-
-        if (collBox != null && canInteractBox == collBox)
-        {
-            canInteractBox = null;
-        }
     }
 
     //Game Code
@@ -181,45 +208,76 @@ public class PlayerBot : MonoBehaviour
 
         // TODO: Sendsignal over to Station Tops for interaction
 
-        if (carryingBox)
+        // HAVE MINIGAME CONTROLS HERE
+        // If Carrying a box
+        if (isInteracting1 || isInteracting2)
         {
-            if (canInteractStation != null && isInteracting1)
+            if (carryingBox)
             {
-                carryingBox.isCarried = false;
-                carryingBox.isPlaced = true;
-                canInteractStation.Interact(this, carryingBox);
-            }
+                if (canInteractStation != null && isInteracting1)
+                {
+                    carryingBox.isCarried = false;
+                    carryingBox.isPlaced = true;
+                    canInteractStation.Interact(this, carryingBox);
+                }
 
-            if (canInteractStation != null && isInteracting2)
-            {
-                carryingBox.isCarried = false;
-                carryingBox.isPlaced = true;
-                canInteractStation.Interact(this, carryingBox);
+                if (canInteractStation != null && isInteracting2)
+                {
+                    carryingBox.isCarried = false;
+                    carryingBox.isPlaced = true;
+                    canInteractStation.Interact(this, carryingBox);
+                }
             }
-        } else
-        {
-            if(canInteractBox && isInteracting1)
+            else
             {
-                canInteractBox.isCarried = true;
-                canInteractBox.isPlaced = false;
+                // If not carrying a box
+                if (canInteractStation != null && canInteractStation.currentBox != null)
+                {
+                    if(canInteractStation.progress >= 1f)
+                    {
+                        canInteractStation.Interact(this, null);
+                    } else if (canInteractStation.isWorking == false)
+                    {
+                        canInteractStation.Interact(this, null);
+                    }
+                }
+            }
+        }
+        // Check Joystick Control
+        if(isWorking)
+        {
+            if(isSprinting)
+            {
+                // Cancel Work, change anim
+                isWorking = false;
+                workStation.Pause();
+                workStation = null;
             }
         }
 
-        // Check Joystick Control
-        if(joystickMoving)
+        if (joystickMoving && !isWorking)
         {
+            // handle movement
             Vector2 directionToMove = joystickPosition * (movingSpeed * (isSprinting ? 1.5f : 1f));
 
-            if(transform.position.z < -3.5f && transform.position.z > 40f)
+            // Set movement limits
+            if((transform.position.z < -3.5f && directionToMove.y < 0) || (transform.position.z > 40f && directionToMove.y > 0))
             {
                 directionToMove.y = 0f;
-            } else if (transform.position.x < -29f && transform.position.x > 29f)
-            {
+            }
+            if ((transform.position.x < -29f && directionToMove.x < 0) || (transform.position.x > 29f && directionToMove.x > 0)) {
                 directionToMove.x = 0f;
             }
 
             // TODO:: Should be rigidbody physics?
+            Debug.Log("TRANSLATING");
             gameObject.transform.Translate(new Vector3(directionToMove.x, 0, directionToMove.y));
+
+            Vector3 dir = new Vector3(directionToMove.x, transform.position.y, directionToMove.y);
+            Quaternion rot = Quaternion.LookRotation(dir);
+            // slerp to the desired rotation over time
+            Debug.Log("ROTATING");
+            modelReference.transform.localRotation = Quaternion.Slerp(modelReference.transform.localRotation, rot, rotationSpeed * Time.deltaTime);
         }
     }
 }

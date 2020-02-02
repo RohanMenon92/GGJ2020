@@ -51,8 +51,8 @@ public class UserControl : MonoBehaviour
         {
             if (AirConsole.instance.GetControllerDeviceIds().Count >= 2)
             {
-                smithBot = gameManager.OnPlayerAdded();
-                sparkyBot = gameManager.OnPlayerAdded();
+                smithBot = gameManager.GetSmithBot();
+                sparkyBot = gameManager.GetSparkyBot();
                 StartGame();
             }
             else

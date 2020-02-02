@@ -32,8 +32,7 @@ public class BoxGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        
+                
     }
 
     public void SpawnBox()
@@ -44,13 +43,17 @@ public class BoxGenerator : MonoBehaviour
             // pull out a new box
             // do whatever else needs to be done
             MoveBoxToTop();
+            thisStation.SetCurrentBox(boxesPool[releasingBoxIndex]);
+            thisStation.isWorking = false;
+            thisStation.progress = 1f;
             releasingBoxIndex++;
         }
     }
 
     public void MoveBoxToTop()
     {
-        boxesPool[releasingBoxIndex].transform.Translate(0f, 1f, 0f);
+        boxesPool[releasingBoxIndex].transform.position = 
+            new Vector3(thisStation.boxTransform.position.x, thisStation.boxTransform.position.y - 2f, thisStation.boxTransform.position.z);
     }
 
 
