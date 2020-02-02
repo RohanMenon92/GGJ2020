@@ -241,6 +241,13 @@ MonoBehaviour:
   inspectedAssets:
   - {fileID: 21300000, guid: d4c056d4a0861ee48b0690c11427e4c9, type: 3}
   - {fileID: 21300000, guid: 9d0620a5611211849b96f8eeb40c18b7, type: 3}
+  productionIconsAssets:
+  - {fileID: 21300000, guid: 461b93a64f54f8144a68aeacf8c9b74f, type: 3}
+  - {fileID: 21300000, guid: 099e8b0e07a35884faf3122df8340ff9, type: 3}
+  - {fileID: 21300000, guid: 3130afe78d1a3bb4785c12e0a400454b, type: 3}
+  - {fileID: 21300000, guid: 7874de7662482c147a81de97392f84ad, type: 3}
+  - {fileID: 21300000, guid: 084e6c957cc7ba0459c2f551addae4b9, type: 3}
+  - {fileID: 21300000, guid: 55b0f11108e4f8744bed2b561b77efcf, type: 3}
 --- !u!114 &2206075286318143985
 MonoBehaviour:
   m_ObjectHideFlags: 0
