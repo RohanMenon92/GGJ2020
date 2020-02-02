@@ -214,7 +214,7 @@ PrefabInstance:
     - target: {fileID: 7213978872312421915, guid: 9fcbc670bea338a4791aa356da4d12ea,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2929325635966716011, guid: 9fcbc670bea338a4791aa356da4d12ea,
         type: 3}
@@ -845,6 +845,8 @@ MonoBehaviour:
   readyText: {fileID: 687997652}
   disconnectText: {fileID: 673495552}
   numsOfBoxes: 3
+  levelTime: 300
+  isPlaying: 0
   smithBot: {fileID: 4422044241363737427}
   sparkyBot: {fileID: 8692419317353154245}
 --- !u!4 &393499762
@@ -1303,9 +1305,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1706711995}
-  - {fileID: 571663667}
-  - {fileID: 1394920029}
   - {fileID: 292922831}
+  - {fileID: 1394920029}
+  - {fileID: 571663667}
   - {fileID: 1188106497}
   - {fileID: 1417161917}
   m_Father: {fileID: 0}

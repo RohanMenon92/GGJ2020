@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
 
     public void showResult()
     {
+        isPlaying = false;
         resultsPanel.SetActive(true);
     }
 }
