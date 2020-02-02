@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public Transform disconnectText;
 
     public int numsOfBoxes;
+    public float levelTime;
+    public bool isPlaying;
 
     public PlayerBot smithBot;
     public PlayerBot sparkyBot;
@@ -30,18 +32,22 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         boxGenerator = FindObjectOfType<BoxGenerator>();
+        boxGenerator.instantiatePool(numsOfBoxes);
         startGame();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(isPlaying)
+        {
+            levelTime -= Time.deltaTime;
+        }
     }
 
     public void startGame()
     {
-        boxGenerator.instantiatePool(numsOfBoxes);
+        isPlaying = true;
         boxGenerator.SpawnBox();
     }
 

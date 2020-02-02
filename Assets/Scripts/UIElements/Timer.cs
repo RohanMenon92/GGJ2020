@@ -5,21 +5,21 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     private TMP_Text timerText;
-    public float timeLeft = 300.0f;
     private int minutes;
     private int seconds;
+    private GameManager gManager;
 
     // Start is called before the first frame update
     void Start()
     {
         timerText = GetComponent<TMP_Text>();
-        
+        gManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        timeLeft -= Time.deltaTime;
+        float timeLeft = gManager.levelTime;
         minutes = (int)Mathf.Floor(timeLeft / 60);
         seconds = (int)timeLeft % 60;
         
