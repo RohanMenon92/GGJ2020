@@ -20,3 +20,8 @@ This can be seen at the end of the video.
 - Party Maker (Sponsored by AirConsole)
 - A kind of cooperation (sponsored by Sony Interactive Entertainment)
 - Language-Independence (Sponsored by Valve Software)
+
+## Screenshots
+![Screen](https://github.com/RohanMenon92/GGJ2020/blob/master/Screenshots/SparkySmith1.PNG)
+![Shield2](https://github.com/RohanMenon92/GGJ2020/blob/master/Screenshots/SparkySmith2.PNG)
+![Gameplay](https://github.com/RohanMenon92/GGJ2020/blob/master/Screenshots/SparkySmith3.PNG)
